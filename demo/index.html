@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="ru" data-lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BestHome — квартиры от застройщика в Алании | демо</title>
+<meta name="robots" content="noindex,nofollow">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=Prata&display=swap">
+<style>
+/* BestHome — демо бережного переноса. Структура и палитра повторяют besthome.com.tr:
+   графит #222124, бронза #796655, шампань #9d8b72, песок #e8e5dd, фон #f8f7f4.
+   Изменено только нужное: заголовки — Prata (дидона с кириллицей вместо IvyMode),
+   текст — Geist (был на сайте, кириллица есть), факты и цена в карточках, кнопка заявки
+   под названием проекта, таблица планировок. Новых цветов нет. */
+:root{
+  --ink:#222124; --ink-2:#4b4a4e; --muted:#706a6b; --bronze:#796655; --gold:#9d8b72;
+  --sand:#e8e5dd; --sand-2:#dcd7cc; --paper:#f8f7f4; --line:#ddd8ce;
+  --display:"Prata", "Times New Roman", serif;
+  --body:"Geist", -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+*{box-sizing:border-box}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 16px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.12;margin:0;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:1296px;margin:0 auto;padding-left:max(24px,env(safe-area-inset-left,0px));padding-right:max(24px,env(safe-area-inset-right,0px))}
+[data-l]{display:none}
+html[data-lang="ru"] [data-l="ru"],html[data-lang="tr"] [data-l="tr"]{display:revert}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+.ribbon{background:var(--sand);color:var(--ink-2);font-size:12.5px;text-align:center;padding:5px 12px;border-bottom:1px solid var(--line)}
+
+/* шапка — как на сайте */
+.hdr{position:sticky;top:0;z-index:20;background:var(--ink);color:#e7e6e6}
+.hdr .wrap{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:80px}
+.hdr .l,.hdr .r{display:flex;align-items:center;gap:22px;font-size:14px}
+.hdr .r{justify-content:flex-end}
+.burger{width:36px;height:36px;border:1px solid #3a393d;border-radius:8px;display:grid;place-items:center}
+.burger i{display:block;width:16px;height:1.5px;background:#e7e6e6;box-shadow:0 5px 0 #e7e6e6,0 -5px 0 #e7e6e6}
+.hdr a{text-decoration:none}
+.hdr .logo img{height:22px;width:auto}
+.lang{display:flex;gap:2px}
+.lang button{border:0;background:none;color:#8b8586;font:600 13px var(--body);padding:4px 6px;cursor:pointer}
+.lang button[aria-pressed="true"]{color:#fff}
+.srch{width:18px;height:18px;border:1.5px solid #e7e6e6;border-radius:50%;position:relative}
+.srch:after{content:"";position:absolute;width:6px;height:1.5px;background:#e7e6e6;right:-5px;bottom:-2px;transform:rotate(45deg)}
+
+/* кнопки — как «Контакты / Подробнее» на сайте */
+.pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--sand);color:var(--ink);border:0;border-radius:8px;padding:13px 24px;font:600 12.5px var(--body);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;cursor:pointer;white-space:nowrap}
+.pill.dark{background:var(--ink);color:#fff}
+.pill.light{background:rgba(248,247,244,.94)}
+.more{font:600 12.5px var(--body);letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border-bottom:1.5px solid var(--ink-2);padding-bottom:3px;white-space:nowrap}
+
+/* hero — большое название по центру, как сейчас */
+.hero{position:relative;height:min(86vh,820px);min-height:560px;color:#fff;display:grid;place-items:center;text-align:center;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero:after{content:"";position:absolute;inset:0;background:rgba(20,19,21,.38)}
+.hero .in{position:relative;z-index:1;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.hero h1{font-size:clamp(40px,6.4vw,88px)}
+.hero .facts{font-size:16px;letter-spacing:.02em;opacity:.95}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:6px}
+.hero .cap{position:absolute;z-index:1;left:max(24px,4vw);bottom:40px;text-align:left;max-width:360px;font-size:14px;opacity:.92}
+.dots{display:flex;gap:8px;margin-top:12px}.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.5)}.dots i.on{background:#fff}
+.crumbs{position:absolute;z-index:1;top:0;left:0;right:0;border-bottom:1px solid rgba(255,255,255,.2);padding:22px max(24px,4vw);font-size:13px;text-align:left;color:rgba(255,255,255,.85)}
+.crumbs a{text-decoration:none}
+
+/* слайдер главной — как у них: fade, подпись слева внизу, точки */
+.slider{display:block}
+.slider:after{display:none}
+.slide{position:absolute;inset:0;display:grid;place-items:center;text-align:center;opacity:0;transition:opacity .8s ease;pointer-events:none}
+.slide.on{opacity:1;pointer-events:auto}
+.slide picture,.slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.slide:after{content:"";position:absolute;inset:0;background:rgba(20,19,21,.38)}
+.slide .in{position:relative;z-index:1;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.slide .cap{position:absolute;z-index:1;left:max(24px,4vw);bottom:64px;text-align:left;max-width:380px;font-size:14px;opacity:.92}
+.slider .dots{position:absolute;z-index:2;left:max(24px,4vw);bottom:36px;display:flex;gap:8px;margin:0}
+.slider .dots button{width:8px;height:8px;border-radius:50%;border:0;padding:0;background:rgba(255,255,255,.45);cursor:pointer}
+.slider .dots button.on{background:#fff}
+
+/* «21 год опыта» */
+.exp{background:var(--sand);text-align:center;padding-block:96px 72px}
+.exp h2{font-size:clamp(40px,5vw,72px)}
+.exp p{max-width:70ch;margin:20px auto 0;color:var(--ink-2);font-size:16.5px}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:56px}
+.tiles div{background:var(--sand-2);padding:30px 16px;display:flex;flex-direction:column;align-items:center;gap:6px}
+.tiles b{font:400 44px/1 var(--display)}
+.tiles span{font-size:13px;color:var(--ink-2)}
+
+/* каталог — карточки как на сайте + строка фактов */
+.cat{padding-block:88px}
+.cat h2{font-size:clamp(34px,4vw,52px);text-align:center}
+.cat .sub{text-align:center;color:var(--ink-2);margin-top:12px}
+.tabs{display:flex;gap:34px;margin:44px 0 36px;font:400 22px var(--display);color:var(--muted);flex-wrap:wrap}
+.tabs span.on{color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px 24px}
+.card{display:flex;flex-direction:column;gap:14px;height:100%}
+.card .ph{position:relative;aspect-ratio:306/380;max-width:100%;overflow:hidden}
+.card .ph img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;left:14px;bottom:14px;background:var(--bronze);color:#fff;font-size:12.5px;font-weight:500;padding:5px 10px;border-radius:4px}
+.card h3{font-size:27px;line-height:1.15}
+.card .d{color:var(--ink-2);font-size:15px}
+.card .f{margin-top:auto;font-size:13.5px;color:var(--ink);border-top:1px solid var(--line);padding-top:10px;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.card .f b{font:400 17px var(--display)}
+.card .act{display:flex;align-items:center;gap:22px;margin-top:4px}
+
+/* страница проекта */
+.intro{display:grid;grid-template-columns:300px 1fr;gap:64px;padding-block:88px 64px}
+.meta{display:flex;flex-direction:column;gap:22px}
+.meta div{border-top:1px solid var(--line);padding-top:12px}
+.meta .k{display:block;font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.meta b{font:400 20px var(--display)}
+.intro .txt{display:flex;flex-direction:column;gap:16px;font-size:17px;color:var(--ink-2);max-width:72ch}
+.spec{display:grid;grid-template-columns:1fr 1fr;gap:0 40px;margin-top:12px;font-size:15px}
+.spec div{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid var(--line);padding:11px 0}
+.spec dt{color:var(--muted)}.spec dd{margin:0;text-align:right;color:var(--ink)}
+.units{background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding-block:72px}
+.units h2{font-size:clamp(30px,3.6vw,46px)}
+.tbl{overflow-x:auto;margin-top:28px}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:15.5px}
+th,td{text-align:left;padding:16px 14px;border-bottom:1px solid var(--line)}
+th{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:500}
+td.p{font:400 19px var(--display)}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+.gal{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:250px 250px;gap:12px;padding-block:72px}
+.gal img{width:100%;height:100%;object-fit:cover;max-width:100%}
+.gal img:first-child{grid-row:1/3}
+.lead{background:var(--sand);padding-block:80px;text-align:center}
+.lead h2{font-size:clamp(30px,3.6vw,46px)}
+.lead p{max-width:60ch;margin:14px auto 0;color:var(--ink-2)}
+.form{display:grid;grid-template-columns:1fr 1fr auto;gap:12px;max-width:820px;margin:30px auto 0;text-align:left}
+.form input{font:16px var(--body);padding:14px 16px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--ink);width:100%}
+.form .kv{grid-column:1/-1;font-size:13px;color:var(--muted);display:flex;gap:8px;align-items:center;justify-content:center}
+.form input[type=checkbox]{width:auto;padding:0;margin:0}
+.form .ok{grid-column:1/-1;color:var(--bronze);font-weight:600;font-size:14px}
+
+/* подвал — как на сайте */
+.ftr{background:var(--ink);color:#c9c4bd;padding-block:56px 40px;font-size:14px}
+.ftr .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+.ftr img{height:22px;width:auto;margin-bottom:14px}
+.ftr b{color:#fff;display:block;margin-bottom:10px;font-weight:600}
+.ftr a{text-decoration:none;display:block;margin:4px 0;color:#d8d3cc}
+.ftr .legal{grid-column:1/-1;border-top:1px solid #3a393d;padding-top:16px;font-size:12.5px;color:#a7a1a2}
+
+/* связь: их бронзовая вкладка + один тёмный круг консультанта, без автооткрытия */
+.callback{position:fixed;right:0;top:42%;z-index:30;background:var(--bronze);color:#fff;writing-mode:vertical-rl;transform:rotate(180deg);padding:16px 10px;font:600 12px var(--body);letter-spacing:.08em;text-transform:uppercase;border-radius:0 8px 8px 0;text-decoration:none}
+.chatbtn{position:fixed;right:max(20px,env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:10px;background:var(--ink);color:#fff;border-radius:999px;padding:12px 18px 12px 14px;font:600 14px var(--body);text-decoration:none;box-shadow:0 10px 24px -12px rgba(0,0,0,.5)}
+.chatbtn i{width:28px;height:28px;border-radius:50%;background:var(--bronze);display:grid;place-items:center;font-style:normal}
+.chatbtn svg{width:15px;height:15px}
+
+@media (max-width:1080px){
+  .grid{grid-template-columns:1fr 1fr}
+  .intro{grid-template-columns:1fr;gap:32px}
+  .hdr .l a.txt,.hdr .r .tel{display:none}
+}
+@media (max-width:680px){
+  .hdr .wrap{height:64px}
+  .hdr .srch{display:none}
+  .hdr .logo img{height:18px}
+  .tiles{grid-template-columns:1fr 1fr}
+  .grid{grid-template-columns:1fr}
+  .spec{grid-template-columns:1fr}
+  .form{grid-template-columns:1fr}
+  .gal{grid-template-columns:1fr 1fr;grid-template-rows:200px 140px 140px}
+  .gal img:first-child{grid-column:1/3;grid-row:auto}
+  .ftr .wrap{grid-template-columns:1fr}
+  .slide .cap{display:none}
+  .slider .dots{left:50%;transform:translateX(-50%)}
+  .chatbtn span{display:none}.chatbtn{padding:12px}
+  .callback{display:none}
+}
+
+</style>
+</head>
+<body>
+<div class="ribbon"><span data-l="ru">Демо UWIN-MEDIA: ваш дизайн после бережной шлифовки</span><span data-l="tr">UWIN-MEDIA demosu: tasarımınız, özenli cila sonrası</span></div>
+
+<header class="hdr"><div class="wrap">
+  <div class="l"><span class="burger" aria-hidden="true"><i></i></span><a class="txt" href="#cat"><span data-l="ru">Проекты</span><span data-l="tr">Projeler</span></a></div>
+  <a class="logo" href="index.html" aria-label="BestHome"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI5IiBoZWlnaHQ9IjIxIiB2aWV3Qm94PSIwIDAgMTI5IDIxIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMTE4LjkzIDEyLjUyMDhWMTIuNzMzMUMxMTguOTMgMTMuNjcwMyAxMTguOTc0IDE0LjUzNjggMTE5LjA2MyAxNS4zMzI2QzExOS4xNTEgMTYuMTI4NCAxMTkuMzI4IDE2LjgyNjkgMTE5LjU5MyAxNy40MjgyQzExOS44NzYgMTguMDI5NSAxMjAuMjc0IDE4LjQ5ODEgMTIwLjc4NyAxOC44MzQxQzEyMS4zMTggMTkuMTcwMSAxMjIuMDA3IDE5LjMzODEgMTIyLjg1NiAxOS4zMzgxQzEyMy40NTcgMTkuMzM4MSAxMjMuOTg4IDE5LjI0OTcgMTI0LjQ0OCAxOS4wNzI4QzEyNC45MDggMTguODk2IDEyNS4zMDUgMTguNjU3MyAxMjUuNjQxIDE4LjM1NjZDMTI1Ljk5NSAxOC4wNTYgMTI2LjI5NiAxNy43MDIzIDEyNi41NDMgMTcuMjk1NkMxMjYuNzkxIDE2Ljg3MTIgMTI3LjAwMyAxNi40MjAyIDEyNy4xOCAxNS45NDI3TDEyNy43NjQgMTYuMTU0OUMxMjcuNDgxIDE2LjkzMzEgMTI3LjE1MyAxNy41Nzg1IDEyNi43ODIgMTguMDkxNEMxMjYuNDExIDE4LjYwNDIgMTI1Ljk4NiAxOS4wMTA5IDEyNS41MDkgMTkuMzExNkMxMjUuMDMxIDE5LjYxMjIgMTI0LjQ5MiAxOS44MjQ0IDEyMy44OTEgMTkuOTQ4MkMxMjMuMjg5IDIwLjA4OTcgMTIyLjYyNiAyMC4xNjA0IDEyMS45MDEgMjAuMTYwNEMxMjAuOTExIDIwLjE2MDQgMTIwLjAzNiAxOS45ODM2IDExOS4yNzUgMTkuNjI5OUMxMTguNTMyIDE5LjI1ODUgMTE3LjkwNSAxOC43NjM0IDExNy4zOTIgMTguMTQ0NEMxMTYuODk3IDE3LjUyNTUgMTE2LjUyNSAxNi44MDkzIDExNi4yNzggMTUuOTk1OEMxMTYuMDMgMTUuMTY0NiAxMTUuOTA2IDE0LjI4MDQgMTE1LjkwNiAxMy4zNDMyQzExNS45MDYgMTIuNDQxMyAxMTYuMDQ4IDExLjU4MzYgMTE2LjMzMSAxMC43NzAxQzExNi42MTQgOS45Mzg5NSAxMTcuMDIgOS4yMTM4OSAxMTcuNTUxIDguNTk0OTVDMTE4LjA4MSA3Ljk1ODMyIDExOC43MjcgNy40NTQzMiAxMTkuNDg3IDcuMDgyOTVDMTIwLjI0OCA2LjcxMTU4IDEyMS4xMTQgNi41MjU4OSAxMjIuMDg3IDYuNTI1ODlDMTIyLjkzNiA2LjUyNTg5IDEyMy43MDUgNi42NzYyMSAxMjQuMzk1IDYuOTc2ODRDMTI1LjEwMiA3LjI1OTc5IDEyNS43MDMgNy42NjY1MyAxMjYuMTk4IDguMTk3MDVDMTI2LjcxMSA4LjcyNzU4IDEyNy4xIDkuMzY0MjEgMTI3LjM2NiAxMC4xMDY5QzEyNy42NDkgMTAuODMyIDEyNy43OSAxMS42MzY2IDEyNy43OSAxMi41MjA4SDExOC45M1pNMTI0LjYwNyAxMS42OTg1QzEyNC42MDcgMTEuMjIxMSAxMjQuNTg5IDEwLjcxNzEgMTI0LjU1NCAxMC4xODY1QzEyNC41MTggOS42NTYgMTI0LjQwNCA5LjE2OTY4IDEyNC4yMDkgOC43Mjc1OEMxMjQuMDMyIDguMjg1NDcgMTIzLjc0OSA3LjkyMjk1IDEyMy4zNiA3LjY0QzEyMi45ODkgNy4zMzkzNyAxMjIuNDY3IDcuMTg5MDUgMTIxLjc5NSA3LjE4OTA1QzEyMS4yMjkgNy4xODkwNSAxMjAuNzYxIDcuMzQ4MjEgMTIwLjM4OSA3LjY2NjUzQzEyMC4wMTggNy45ODQ4NCAxMTkuNzI2IDguMzczODkgMTE5LjUxNCA4LjgzMzY4QzExOS4zMDIgOS4yOTM0NyAxMTkuMTUxIDkuNzg4NjMgMTE5LjA2MyAxMC4zMTkyQzExOC45NzQgMTAuODMyIDExOC45MyAxMS4yOTE4IDExOC45MyAxMS42OTg1SDEyNC42MDdaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTAwLjU5MiAxMC4zOTg3QzEwMC41OTIgMTAuMDI3NCAxMDAuNTY1IDkuNjczNjggMTAwLjUxMiA5LjMzNzY4QzEwMC40NzcgOC45ODQgMTAwLjM3OSA4LjY3NDUzIDEwMC4yMiA4LjQwOTI2QzEwMC4wNzkgOC4xMjYzMiA5OS44NjY2IDcuOTA1MjYgOTkuNTgzNiA3Ljc0NjExQzk5LjMwMDcgNy41NjkyNiA5OC45MjA1IDcuNDgwODQgOTguNDQzIDcuNDgwODRDOTcuODU5NCA3LjQ4MDg0IDk3LjM0NjYgNy42MTM0NyA5Ni45MDQ1IDcuODc4NzRDOTYuNDYyNCA4LjE0NCA5Ni4wODIyIDguNTA2NTMgOTUuNzYzOCA4Ljk2NjMyQzk1LjQ2MzIgOS40MDg0MiA5NS4yMzMzIDkuOTIxMjYgOTUuMDc0MiAxMC41MDQ4Qzk0LjkzMjcgMTEuMDcwNyA5NC44NjE5IDExLjY2MzIgOTQuODYxOSAxMi4yODIxVjE5LjE3ODlIOTYuOTU3NVYxOS44NDIxSDg5Ljg3NVYxOS4xNzg5SDkyLjE1NjNWNy41MDczN0g4OS44NzVWNi44NDQyMUg5NC44NjE5VjkuMzM3NjhIOTQuOTE1Qzk1LjMyMTcgOC40MzU3OSA5NS45MTQyIDcuNzQ2MSA5Ni42OTIzIDcuMjY4NjNDOTcuNDcwNCA2Ljc3MzQ3IDk4LjQwNzYgNi41MjU4OSA5OS41MDQxIDYuNTI1ODlDMTAwLjU4MyA2LjUyNTg5IDEwMS40NDkgNi43NzM0NyAxMDIuMTA0IDcuMjY4NjNDMTAyLjc1OCA3Ljc0NjEgMTAzLjEzOCA4LjQ4ODg0IDEwMy4yNDQgOS40OTY4NEgxMDMuMjk3QzEwMy42ODYgOC40ODg4NCAxMDQuMjk2IDcuNzQ2MSAxMDUuMTI4IDcuMjY4NjNDMTA1Ljk1OSA2Ljc3MzQ3IDEwNi44NjEgNi41MjU4OSAxMDcuODMzIDYuNTI1ODlDMTA5LjE0MiA2LjUyNTg5IDExMC4xMTUgNi44MTc2OCAxMTAuNzUxIDcuNDAxMjZDMTExLjQwNiA3Ljk4NDg0IDExMS43MzMgOC45Mzk3OSAxMTEuNzMzIDEwLjI2NjFWMTkuMTc4OUgxMTMuODI4VjE5Ljg0MjFIMTA2LjkzMVYxOS4xNzg5SDEwOS4wMjdWMTAuMzk4N0MxMDkuMDI3IDEwLjAyNzQgMTA5IDkuNjczNjggMTA4Ljk0NyA5LjMzNzY4QzEwOC45MTIgOC45ODQgMTA4LjgyNCA4LjY3NDUzIDEwOC42ODIgOC40MDkyNkMxMDguNTQxIDguMTI2MzIgMTA4LjMzNyA3LjkwNTI2IDEwOC4wNzIgNy43NDYxMUMxMDcuODA3IDcuNTY5MjYgMTA3LjQ2MiA3LjQ4MDg0IDEwNy4wMzggNy40ODA4NEMxMDYuNDE5IDcuNDgwODQgMTA1Ljg3IDcuNjIyMzIgMTA1LjM5MyA3LjkwNTI2QzEwNC45MzMgOC4xODgyMSAxMDQuNTQ0IDguNTY4NDIgMTA0LjIyNiA5LjA0NTlDMTAzLjkyNSA5LjUwNTY4IDEwMy42OTUgMTAuMDM2MiAxMDMuNTM2IDEwLjYzNzVDMTAzLjM3NyAxMS4yMjExIDEwMy4yOTcgMTEuODIyMyAxMDMuMjk3IDEyLjQ0MTNWMTkuMTc4OUgxMDUuMzkzVjE5Ljg0MjFIOTguNDk2MVYxOS4xNzg5SDEwMC41OTJWMTAuMzk4N1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik03NS42MjMgMTMuMzQzMkM3NS42MjMgMTIuNjcxMiA3NS43MjAzIDExLjkzNzMgNzUuOTE0OCAxMS4xNDE1Qzc2LjEyNyAxMC4zNDU3IDc2LjQ3MTkgOS42MTE3OSA3Ni45NDk0IDguOTM5NzlDNzcuNDI2OCA4LjI1MDExIDc4LjA1NDYgNy42NzUzNyA3OC44MzI3IDcuMjE1NThDNzkuNjI4NSA2Ljc1NTc5IDgwLjYxODggNi41MjU4OSA4MS44MDM3IDYuNTI1ODlDODIuOTg4NSA2LjUyNTg5IDgzLjk3IDYuNzU1NzkgODQuNzQ4MSA3LjIxNTU4Qzg1LjU0MzkgNy42NzUzNyA4Ni4xODA1IDguMjUwMTEgODYuNjU4IDguOTM5NzlDODcuMTM1NSA5LjYxMTc5IDg3LjQ3MTUgMTAuMzQ1NyA4Ny42NjYgMTEuMTQxNUM4Ny44NzgyIDExLjkzNzMgODcuOTg0MyAxMi42NzEyIDg3Ljk4NDMgMTMuMzQzMkM4Ny45ODQzIDE0LjAxNTIgODcuODc4MiAxNC43NDkxIDg3LjY2NiAxNS41NDQ4Qzg3LjQ3MTUgMTYuMzQwNiA4Ny4xMzU1IDE3LjA4MzQgODYuNjU4IDE3Ljc3MzFDODYuMTgwNSAxOC40NDUxIDg1LjU0MzkgMTkuMDEwOSA4NC43NDgxIDE5LjQ3MDdDODMuOTcgMTkuOTMwNSA4Mi45ODg1IDIwLjE2MDQgODEuODAzNyAyMC4xNjA0QzgwLjYxODggMjAuMTYwNCA3OS42Mjg1IDE5LjkzMDUgNzguODMyNyAxOS40NzA3Qzc4LjA1NDYgMTkuMDEwOSA3Ny40MjY4IDE4LjQ0NTEgNzYuOTQ5NCAxNy43NzMxQzc2LjQ3MTkgMTcuMDgzNCA3Ni4xMjcgMTYuMzQwNiA3NS45MTQ4IDE1LjU0NDhDNzUuNzIwMyAxNC43NDkxIDc1LjYyMyAxNC4wMTUyIDc1LjYyMyAxMy4zNDMyWk03OC42NDcgMTMuMzQzMkM3OC42NDcgMTQuMDMyOCA3OC42NjQ3IDE0Ljc0OTEgNzguNzAwMSAxNS40OTE4Qzc4LjczNTUgMTYuMjE2OCA3OC44NTA0IDE2Ljg4IDc5LjA0NDkgMTcuNDgxM0M3OS4yMzk1IDE4LjA2NDggNzkuNTQ4OSAxOC41NTEyIDc5Ljk3MzQgMTguOTQwMkM4MC40MTU1IDE5LjMxMTYgODEuMDI1NiAxOS40OTczIDgxLjgwMzcgMTkuNDk3M0M4Mi41ODE4IDE5LjQ5NzMgODMuMTgzMSAxOS4zMTE2IDgzLjYwNzUgMTguOTQwMkM4NC4wMzE5IDE4LjU1MTIgODQuMzQxNCAxOC4wNjQ4IDg0LjUzNTkgMTcuNDgxM0M4NC43NDgxIDE2Ljg4IDg0Ljg3MTkgMTYuMjE2OCA4NC45MDczIDE1LjQ5MThDODQuOTQyNiAxNC43NDkxIDg0Ljk2MDMgMTQuMDMyOCA4NC45NjAzIDEzLjM0MzJDODQuOTYwMyAxMi42NTM1IDg0Ljk0MjYgMTEuOTQ2MSA4NC45MDczIDExLjIyMTFDODQuODcxOSAxMC40NzgzIDg0Ljc0ODEgOS44MTUxNiA4NC41MzU5IDkuMjMxNThDODQuMzQxNCA4LjYzMDMyIDg0LjAzMTkgOC4xNDQgODMuNjA3NSA3Ljc3MjYzQzgzLjE4MzEgNy4zODM1OCA4Mi41ODE4IDcuMTg5MDUgODEuODAzNyA3LjE4OTA1QzgxLjAyNTYgNy4xODkwNSA4MC40MTU1IDcuMzgzNTggNzkuOTczNCA3Ljc3MjYzQzc5LjU0ODkgOC4xNDQgNzkuMjM5NSA4LjYzMDMyIDc5LjA0NDkgOS4yMzE1OEM3OC44NTA0IDkuODE1MTYgNzguNzM1NSAxMC40NzgzIDc4LjcwMDEgMTEuMjIxMUM3OC42NjQ3IDExLjk0NjEgNzguNjQ3IDEyLjY1MzUgNzguNjQ3IDEzLjM0MzJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjcuOTc1IDEuNTM4OTVINjUuNTg3NlYwLjg3NTc5M0g3My40OTI1VjEuNTM4OTVINzAuOTk5VjE5LjE3OUg3My40OTI1VjE5Ljg0MjFINjUuNTg3NlYxOS4xNzlINjcuOTc1VjEwLjQyNTNINTkuNzUxOFYxOS4xNzlINjIuMTM5MlYxOS44NDIxSDU0LjIzNDRWMTkuMTc5SDU2LjcyNzhWMS41Mzg5NUg1NC4yMzQ0VjAuODc1NzkzSDYyLjEzOTJWMS41Mzg5NUg1OS43NTE4VjkuNzYyMTFINjcuOTc1VjEuNTM4OTVaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNDUuMjE2OCA2Ljg0NDIySDQ3LjA0NzFWMy4zMTYyMkg0OS43NTI4VjYuODQ0MjJINTIuNjk3MlY3LjUwNzM4SDQ5Ljc1MjhWMTYuODk3N0M0OS43NTI4IDE3LjY5MzUgNDkuODUwMSAxOC4yNzcxIDUwLjA0NDYgMTguNjQ4NEM1MC4yMzkxIDE5LjAxOTggNTAuNjEwNSAxOS4yMDU1IDUxLjE1ODcgMTkuMjA1NUM1MS42NzE1IDE5LjIwNTUgNTIuMDUxNyAxOS4wNDYzIDUyLjI5OTMgMTguNzI4QzUyLjU2NDYgMTguNDA5NyA1Mi44MDMzIDE4LjAzODMgNTMuMDE1NSAxNy42MTM5TDUzLjYyNTYgMTcuODc5Mkw1My4zODY5IDE4LjM1NjZDNTMuMTIxNiAxOC44MzQxIDUyLjczMjYgMTkuMjU4NSA1Mi4yMTk3IDE5LjYyOTlDNTEuNzI0NiAxOS45ODM2IDUwLjk5OTUgMjAuMTYwNCA1MC4wNDQ2IDIwLjE2MDRDNDkuMzU0OSAyMC4xNjA0IDQ4LjgwNjcgMjAuMDcyIDQ4LjQgMTkuODk1MkM0OC4wMTA5IDE5LjcxODMgNDcuNzEwMyAxOS40Nzk2IDQ3LjQ5ODEgMTkuMTc5QzQ3LjMwMzUgMTguODYwNiA0Ny4xNzk3IDE4LjUwNyA0Ny4xMjY3IDE4LjExNzlDNDcuMDczNiAxNy43Mjg5IDQ3LjA0NzEgMTcuMzIyMSA0Ny4wNDcxIDE2Ljg5NzdWNy41MDczOEg0NS4yMTY4VjYuODQ0MjJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNDIuNDU5OSAxMC43OTY2SDQxLjgyMzNDNDEuNzM0OSAxMC4zNTQ1IDQxLjYxOTkgOS45MzAxIDQxLjQ3ODUgOS41MjMzN0M0MS4zNTQ3IDkuMDk4OTUgNDEuMTYwMSA4LjcyNzU4IDQwLjg5NDkgOC40MDkyNkM0MC42NDczIDguMDkwOTUgNDAuMzI5IDcuODM0NTMgMzkuOTM5OSA3LjY0QzM5LjU1MDkgNy40NDU0NyAzOS4wNjQ2IDcuMzQ4MjEgMzguNDgxIDcuMzQ4MjFDMzcuODc5NyA3LjM0ODIxIDM3LjM1OCA3LjQ5ODUzIDM2LjkxNTkgNy43OTkxNkMzNi40OTE1IDguMDgyMSAzNi4yNzkzIDguNTQxODkgMzYuMjc5MyA5LjE3ODUzQzM2LjI3OTMgOS43MjY3NCAzNi40NTYyIDEwLjE1MTIgMzYuODA5OCAxMC40NTE4QzM3LjE4MTIgMTAuNzUyNCAzNy42MzIyIDExLjAxNzcgMzguMTYyNyAxMS4yNDc2QzM4LjY5MzIgMTEuNDU5OCAzOS4yNzY4IDExLjY2MzIgMzkuOTEzNCAxMS44NTc3QzQwLjU1IDEyLjA1MjIgNDEuMTMzNiAxMi4zMTc1IDQxLjY2NDIgMTIuNjUzNUM0Mi4xOTQ3IDEyLjk3MTggNDIuNjM2OCAxMy40MDUxIDQyLjk5MDUgMTMuOTUzM0M0My4zNjE4IDE0LjUwMTUgNDMuNTQ3NSAxNS4yMjY1IDQzLjU0NzUgMTYuMTI4NEM0My41NDc1IDE2LjgwMDQgNDMuMzk3MiAxNy4zOTI4IDQzLjA5NjYgMTcuOTA1N0M0Mi43OTU5IDE4LjQwMDggNDIuNDA2OSAxOC44MTY0IDQxLjkyOTQgMTkuMTUyNEM0MS40NTE5IDE5LjQ4ODQgNDAuOTEyNiAxOS43MzYgNDAuMzExMyAxOS44OTUyQzM5LjcxIDIwLjA3MiAzOS4xMTc2IDIwLjE2MDQgMzguNTM0IDIwLjE2MDRDMzcuNzM4MyAyMC4xNjA0IDM2Ljk2OSAyMC4wODk3IDM2LjIyNjMgMTkuOTQ4MkMzNS40ODM1IDE5LjgwNjcgMzQuNzQwOCAxOS42MDM0IDMzLjk5OCAxOS4zMzgxVjE1LjAxNDNIMzQuNzkzOEMzNC43OTM4IDE1LjYzMzMgMzQuODczNCAxNi4yMTY4IDM1LjAzMjYgMTYuNzY1MUMzNS4xOTE3IDE3LjI5NTYgMzUuNDIxNiAxNy43NjQyIDM1LjcyMjMgMTguMTcwOUMzNi4wNDA2IDE4LjU3NzcgMzYuNDI5NiAxOC45MDQ4IDM2Ljg4OTQgMTkuMTUyNEMzNy4zNjY5IDE5LjM4MjMgMzcuOTMyOCAxOS40OTczIDM4LjU4NzEgMTkuNDk3M0MzOC45MjMxIDE5LjQ5NzMgMzkuMjU5MSAxOS40NTMxIDM5LjU5NTEgMTkuMzY0NkMzOS45NDg4IDE5LjI1ODUgNDAuMjU4MyAxOS4xMDgyIDQwLjUyMzUgMTguOTEzN0M0MC44MDY1IDE4LjcxOTIgNDEuMDM2NCAxOC40ODA0IDQxLjIxMzIgMTguMTk3NUM0MS4zOSAxNy44OTY4IDQxLjQ3ODUgMTcuNTUyIDQxLjQ3ODUgMTcuMTYyOUM0MS40Nzg1IDE2LjU3OTQgNDEuMzAxNiAxNi4xMTk2IDQwLjk0NzkgMTUuNzgzNkM0MC41OTQzIDE1LjQ0NzYgNDAuMTUyMiAxNS4xNTU4IDM5LjYyMTYgMTQuOTA4MkMzOS4xMDg4IDE0LjY2MDYgMzguNTQyOSAxNC40Mzk2IDM3LjkyMzkgMTQuMjQ1MUMzNy4zMDUgMTQuMDMyOCAzNi43MzAzIDEzLjc3NjQgMzYuMTk5NyAxMy40NzU4QzM1LjY4NjkgMTMuMTc1MiAzNS4yNTM2IDEyLjc5NDkgMzQuODk5OSAxMi4zMzUyQzM0LjU0NjMgMTEuODU3NyAzNC4zNjk0IDExLjIzODcgMzQuMzY5NCAxMC40NzgzQzM0LjM2OTQgOS44NDE2OCAzNC40ODQ0IDkuMjc1NzkgMzQuNzE0MyA4Ljc4MDYzQzM0Ljk0NDIgOC4yODU0NyAzNS4yNTM2IDcuODY5ODkgMzUuNjQyNyA3LjUzMzg5QzM2LjAzMTcgNy4xOTc4OSAzNi40ODI3IDYuOTUwMzIgMzYuOTk1NSA2Ljc5MTE2QzM3LjUwODQgNi42MTQzMiAzOC4wNDc3IDYuNTI1ODkgMzguNjEzNiA2LjUyNTg5QzM5LjMyMSA2LjUyNTg5IDM5Ljk4NDIgNi42MTQzMiA0MC42MDMxIDYuNzkxMTZDNDEuMjIyIDYuOTY4IDQxLjg0MSA3LjE1MzY4IDQyLjQ1OTkgNy4zNDgyMVYxMC43OTY2WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTIyLjE0OSAxMi41MjA4VjEyLjczMzFDMjIuMTQ5IDEzLjY3MDMgMjIuMTkzMiAxNC41MzY4IDIyLjI4MTYgMTUuMzMyNkMyMi4zNzAxIDE2LjEyODQgMjIuNTQ2OSAxNi44MjY5IDIyLjgxMjIgMTcuNDI4MkMyMy4wOTUxIDE4LjAyOTUgMjMuNDkzIDE4LjQ5ODEgMjQuMDA1OCAxOC44MzQxQzI0LjUzNjQgMTkuMTcwMSAyNS4yMjYxIDE5LjMzODEgMjYuMDc0OSAxOS4zMzgxQzI2LjY3NjIgMTkuMzM4MSAyNy4yMDY3IDE5LjI0OTcgMjcuNjY2NSAxOS4wNzI4QzI4LjEyNjMgMTguODk2IDI4LjUyNDIgMTguNjU3MyAyOC44NjAyIDE4LjM1NjZDMjkuMjEzOCAxOC4wNTYgMjkuNTE0NSAxNy43MDIzIDI5Ljc2MjEgMTcuMjk1NkMzMC4wMDk2IDE2Ljg3MTIgMzAuMjIxOCAxNi40MjAyIDMwLjM5ODcgMTUuOTQyN0wzMC45ODIzIDE2LjE1NDlDMzAuNjk5MyAxNi45MzMxIDMwLjM3MjIgMTcuNTc4NSAzMC4wMDA4IDE4LjA5MTRDMjkuNjI5NCAxOC42MDQyIDI5LjIwNSAxOS4wMTA5IDI4LjcyNzUgMTkuMzExNkMyOC4yNTAxIDE5LjYxMjIgMjcuNzEwNyAxOS44MjQ0IDI3LjEwOTQgMTkuOTQ4MkMyNi41MDgyIDIwLjA4OTcgMjUuODQ1IDIwLjE2MDQgMjUuMTE5OSAyMC4xNjA0QzI0LjEyOTYgMjAuMTYwNCAyMy4yNTQzIDE5Ljk4MzYgMjIuNDkzOCAxOS42Mjk5QzIxLjc1MTEgMTkuMjU4NSAyMS4xMjMzIDE4Ljc2MzQgMjAuNjEwNSAxOC4xNDQ0QzIwLjExNTMgMTcuNTI1NSAxOS43NDM5IDE2LjgwOTMgMTkuNDk2NCAxNS45OTU4QzE5LjI0ODggMTUuMTY0NiAxOS4xMjUgMTQuMjgwNCAxOS4xMjUgMTMuMzQzMkMxOS4xMjUgMTIuNDQxMyAxOS4yNjY1IDExLjU4MzYgMTkuNTQ5NCAxMC43NzAxQzE5LjgzMjQgOS45Mzg5NSAyMC4yMzkxIDkuMjEzODkgMjAuNzY5NiA4LjU5NDk1QzIxLjMwMDIgNy45NTgzMiAyMS45NDU2IDcuNDU0MzIgMjIuNzA2MSA3LjA4Mjk1QzIzLjQ2NjUgNi43MTE1OCAyNC4zMzMgNi41MjU4OSAyNS4zMDU2IDYuNTI1ODlDMjYuMTU0NSA2LjUyNTg5IDI2LjkyMzcgNi42NzYyMSAyNy42MTM0IDYuOTc2ODRDMjguMzIwOCA3LjI1OTc5IDI4LjkyMjEgNy42NjY1MyAyOS40MTcyIDguMTk3MDVDMjkuOTMwMSA4LjcyNzU4IDMwLjMxOTEgOS4zNjQyMSAzMC41ODQ0IDEwLjEwNjlDMzAuODY3MyAxMC44MzIgMzEuMDA4OCAxMS42MzY2IDMxLjAwODggMTIuNTIwOEgyMi4xNDlaTTI3LjgyNTYgMTEuNjk4NUMyNy44MjU2IDExLjIyMTEgMjcuODA3OSAxMC43MTcxIDI3Ljc3MjYgMTAuMTg2NUMyNy43MzcyIDkuNjU2IDI3LjYyMjMgOS4xNjk2OCAyNy40Mjc3IDguNzI3NThDMjcuMjUwOSA4LjI4NTQ3IDI2Ljk2NzkgNy45MjI5NSAyNi41Nzg5IDcuNjRDMjYuMjA3NSA3LjMzOTM3IDI1LjY4NTggNy4xODkwNSAyNS4wMTM4IDcuMTg5MDVDMjQuNDQ3OSA3LjE4OTA1IDIzLjk3OTMgNy4zNDgyMSAyMy42MDc5IDcuNjY2NTNDMjMuMjM2NiA3Ljk4NDg0IDIyLjk0NDggOC4zNzM4OSAyMi43MzI2IDguODMzNjhDMjIuNTIwNCA5LjI5MzQ3IDIyLjM3MDEgOS43ODg2MyAyMi4yODE2IDEwLjMxOTJDMjIuMTkzMiAxMC44MzIgMjIuMTQ5IDExLjI5MTggMjIuMTQ5IDExLjY5ODVIMjcuODI1NloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0zLjM5NTgyIDEuNTM4OTVIMC45MDIzNDRWMC44NzU3OTNIOS45NzQzNEMxMC45NjQ3IDAuODc1NzkzIDExLjc3ODEgMC45OTA3NDEgMTIuNDE0OCAxLjIyMDY0QzEzLjA1MTQgMS40NTA1MyAxMy41NDY2IDEuNzY4ODUgMTMuOTAwMiAyLjE3NTU4QzE0LjI3MTYgMi41NjQ2NCAxNC41MTkyIDMuMDI0NDIgMTQuNjQzIDMuNTU0OTVDMTQuNzg0NCA0LjA2Nzc5IDE0Ljg1NTIgNC42MTYgMTQuODU1MiA1LjE5OTU4QzE0Ljg1NTIgNS44NTM5IDE0Ljc0OTEgNi40MTk3OSAxNC41MzY5IDYuODk3MjdDMTQuMzI0NyA3LjM3NDc0IDE0LjAzMjkgNy43OTAzMiAxMy42NjE1IDguMTQ0QzEzLjMwNzggOC40OCAxMi44ODM0IDguNzU0MTEgMTIuMzg4MiA4Ljk2NjMyQzExLjg5MzEgOS4xNzg1MyAxMS4zNTM3IDkuMzQ2NTMgMTAuNzcwMSA5LjQ3MDMyVjkuNTIzMzdDMTEuNTgzNiA5LjYyOTQ4IDEyLjMyNjMgOS43ODg2NCAxMi45OTgzIDEwLjAwMDhDMTMuNjg4IDEwLjIxMzEgMTQuMjcxNiAxMC41MjI1IDE0Ljc0OTEgMTAuOTI5M0MxNS4yNDQyIDExLjMxODMgMTUuNjI0NCAxMS44MjIzIDE1Ljg4OTcgMTIuNDQxM0MxNi4xNTUgMTMuMDYwMiAxNi4yODc2IDEzLjgyOTUgMTYuMjg3NiAxNC43NDkxQzE2LjI4NzYgMTUuNzU3MSAxNi4xMzczIDE2LjU5NzEgMTUuODM2NyAxNy4yNjkxQzE1LjUzNiAxNy45MjM0IDE1LjExMTYgMTguNDQ1MSAxNC41NjM0IDE4LjgzNDFDMTQuMDMyOSAxOS4yMDU1IDEzLjM4NzQgMTkuNDcwNyAxMi42MjcgMTkuNjI5OUMxMS44ODQyIDE5Ljc3MTQgMTEuMDcwOCAxOS44NDIxIDEwLjE4NjYgMTkuODQyMUgwLjkwMjM0NFYxOS4xNzlIMy4zOTU4MlYxLjUzODk1Wk02LjQxOTgyIDE5LjE3OUg4Ljk2NjM0QzkuNzk3NSAxOS4xNzkgMTAuNDc4MyAxOS4wNjQgMTEuMDA4OSAxOC44MzQxQzExLjU1NzEgMTguNjA0MiAxMS45ODE1IDE4LjI4NTkgMTIuMjgyMSAxNy44NzkyQzEyLjYwMDQgMTcuNDcyNCAxMi44MTI3IDE2Ljk4NjEgMTIuOTE4OCAxNi40MjAyQzEzLjA0MjYgMTUuODM2NiAxMy4xMDQ0IDE1LjIwODggMTMuMTA0NCAxNC41MzY4QzEzLjEwNDQgMTMuMDUxNCAxMi44MTI3IDExLjkxMDcgMTIuMjI5MSAxMS4xMTVDMTEuNjYzMiAxMC4zMDE1IDEwLjcxNzEgOS44OTQ3NCA5LjM5MDc3IDkuODk0NzRINi40MTk4MlYxOS4xNzlaTTYuNDE5ODIgOS4wNzI0Mkg4LjY0ODAzQzkuMTc4NTUgOS4wNzI0MiA5LjYyOTUgOS4wMTkzNyAxMC4wMDA5IDguOTEzMjdDMTAuMzg5OSA4Ljc4OTQ4IDEwLjcwODIgOC41OTQ5NSAxMC45NTU4IDguMzI5NjlDMTEuMjAzNCA4LjA0Njc0IDExLjM4MDIgNy42NzUzNyAxMS40ODYzIDcuMjE1NThDMTEuNjEwMSA2Ljc1NTc5IDExLjY3MiA2LjE4OTkgMTEuNjcyIDUuNTE3OUMxMS42NzIgNC45ODczNyAxMS42MzY3IDQuNDgzMzcgMTEuNTY1OSA0LjAwNTlDMTEuNDk1MiAzLjUxMDc0IDExLjM1MzcgMy4wODYzMiAxMS4xNDE1IDIuNzMyNjRDMTAuOTQ3IDIuMzYxMjcgMTAuNjY0IDIuMDY5NDggMTAuMjkyNyAxLjg1NzI3QzkuOTM4OTggMS42NDUwNiA5LjQ3MDM0IDEuNTM4OTUgOC44ODY3NiAxLjUzODk1SDYuNDE5ODJWOS4wNzI0MloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=" alt="BestHome" width="129" height="21"></a>
+  <div class="r"><a class="tel" href="tel:+902425112208">+90 242 511 22 08</a><span class="srch" aria-hidden="true"></span><div class="lang" role="group" aria-label="Language"><button type="button" data-set="ru" aria-pressed="true">RU</button><button type="button" data-set="tr" aria-pressed="false">TR</button></div></div>
+</div></header>
+
+<section class="hero slider" aria-roledescription="carousel">
+  <div class="slide on" data-k="legend">
+    <picture><source media="(max-width:680px)" srcset="https://www.besthome.com.tr/media/a5agtizg/slider-m-1.jpg?width=800&format=webp&quality=72"><img src="https://www.besthome.com.tr/media/5rfagafk/slider-1-1.jpg?width=1800&format=webp&quality=72" alt="The Legend" fetchpriority="high"></picture>
+    <div class="in">
+      <h1>The Legend</h1>
+      <p class="facts"><span data-l="ru">Центр Алании · 120 м до моря · 198 квартир · сдан в 2024</span><span data-l="tr">Alanya merkez · denize 120 m · 198 daire · 2024'te teslim</span></p>
+      <div class="cta"><a class="pill light" href="costana.html"><span data-l="ru">Подробнее</span><span data-l="tr">Keşfet</span></a><a class="pill dark" href="#cat"><span data-l="ru">Проекты в продаже</span><span data-l="tr">Satıştaki projeler</span></a></div>
+    </div>
+    <p class="cap"><span data-l="ru">The Legend — престижная жизнь в центре Алании рядом с морем.</span><span data-l="tr">The Legend, şehrin merkezinde denizle buluşan seçkin yaşam alanları sunar.</span></p>
+  </div>
+  <div class="slide" data-k="excellence">
+    <picture><source media="(max-width:680px)" srcset="https://www.besthome.com.tr/media/vihfu4ea/slider-2-m.jpg?width=800&format=webp&quality=72"><img src="https://www.besthome.com.tr/media/bnoj1n1p/slider-2-d.jpg?width=1800&format=webp&quality=72" alt="Excellence" loading="lazy"></picture>
+    <div class="in">
+      <h1>Excellence</h1>
+      <p class="facts"><span data-l="ru">Тосмур · 100 м до моря · 173 квартиры · сдан в 2024</span><span data-l="tr">Tosmur · denize 100 m · 173 daire · 2024'te teslim</span></p>
+      <div class="cta"><a class="pill light" href="costana.html"><span data-l="ru">Подробнее</span><span data-l="tr">Keşfet</span></a><a class="pill dark" href="#cat"><span data-l="ru">Проекты в продаже</span><span data-l="tr">Satıştaki projeler</span></a></div>
+    </div>
+    <p class="cap"><span data-l="ru">Excellence — высокие стандарты, центральная локация и особый уровень комфорта.</span><span data-l="tr">Excellence, yüksek standartları ve merkezi konumuyla ayrıcalıklı bir yaşam sunar.</span></p>
+  </div>
+  <div class="slide" data-k="aria">
+    <picture><source media="(max-width:680px)" srcset="https://www.besthome.com.tr/media/zhhi5hf5/slider-aria-m.jpg?width=800&format=webp&quality=72"><img src="https://www.besthome.com.tr/media/qaiouz1z/slider-aria.jpg?width=1800&format=webp&quality=72" alt="Aria" loading="lazy"></picture>
+    <div class="in">
+      <h1>Aria</h1>
+      <p class="facts"><span data-l="ru">Алания · 615 м до моря · 90 квартир · сдан в 2023</span><span data-l="tr">Alanya · denize 615 m · 90 daire · 2023'te teslim</span></p>
+      <div class="cta"><a class="pill light" href="costana.html"><span data-l="ru">Подробнее</span><span data-l="tr">Keşfet</span></a><a class="pill dark" href="#cat"><span data-l="ru">Проекты в продаже</span><span data-l="tr">Satıştaki projeler</span></a></div>
+    </div>
+    <p class="cap"><span data-l="ru">Aria — эстетичная архитектура, выгодное расположение и комфортная жизнь.</span><span data-l="tr">Aria, estetik mimarisi ve güçlü konumuyla değerli bir yaşam deneyimi sunar.</span></p>
+  </div>
+  <div class="slide" data-k="saga">
+    <picture><source media="(max-width:680px)" srcset="https://www.besthome.com.tr/media/hkwex2m0/slider-saga-m.jpg?width=800&format=webp&quality=72"><img src="https://www.besthome.com.tr/media/uc1f2dc1/slider-saga-d.jpg?width=1800&format=webp&quality=72" alt="Saga" loading="lazy"></picture>
+    <div class="in">
+      <h1>Saga</h1>
+      <p class="facts"><span data-l="ru">Джумхуриет · 370 м до моря · 56 квартир · сдан в 2023</span><span data-l="tr">Cumhuriyet · denize 370 m · 56 daire · 2023'te teslim</span></p>
+      <div class="cta"><a class="pill light" href="costana.html"><span data-l="ru">Подробнее</span><span data-l="tr">Keşfet</span></a><a class="pill dark" href="#cat"><span data-l="ru">Проекты в продаже</span><span data-l="tr">Satıştaki projeler</span></a></div>
+    </div>
+    <p class="cap"><span data-l="ru">Saga — изящная архитектура и детали, которые добавляют ценность городской жизни в Алании.</span><span data-l="tr">Saga, zarif mimarisi ve estetik dokunuşlarıyla şehir hayatına değer katar.</span></p>
+  </div>
+  <div class="slide" data-k="glory">
+    <picture><source media="(max-width:680px)" srcset="https://www.besthome.com.tr/media/suelco3o/ac-i-4_1560x2680.jpg?width=800&format=webp&quality=72"><img src="https://www.besthome.com.tr/media/adufk1pm/ac-i-4_2880x1800.jpg?width=1800&format=webp&quality=72" alt="Cleopatra Glory" loading="lazy"></picture>
+    <div class="in">
+      <h1>Cleopatra Glory</h1>
+      <p class="facts"><span data-l="ru">Клеопатра · 580 м до пляжа · в продаже · сдача 2028 · взнос 20%</span><span data-l="tr">Kleopatra · plaja 580 m · satışta · teslim 2028 · %20 peşinat</span></p>
+      <div class="cta"><a class="pill light" href="costana.html"><span data-l="ru">Подробнее</span><span data-l="tr">Keşfet</span></a><a class="pill dark" href="costana.html#units"><span data-l="ru">Цены и планировки</span><span data-l="tr">Fiyat ve planlar</span></a></div>
+    </div>
+    <p class="cap"><span data-l="ru">Cleopatra Glory — престижный проект в центре Алании рядом с пляжем Клеопатра.</span><span data-l="tr">Cleopatra Glory, seçkin detayları ve konfor odaklı tasarımıyla modern şehir yaşamını yeniden tanımlar.</span></p>
+  </div>
+  <div class="slide" data-k="gardenia">
+    <picture><source media="(max-width:680px)" srcset="https://www.besthome.com.tr/media/rlldmoet/gardenia.jpg?width=800&format=webp&quality=72"><img src="https://www.besthome.com.tr/media/qnvjiacy/slider-9.jpeg?width=1800&format=webp&quality=72" alt="Gardenia" loading="lazy"></picture>
+    <div class="in">
+      <h1>Gardenia</h1>
+      <p class="facts"><span data-l="ru">Демирташ · 108 квартир · сдан в 2024</span><span data-l="tr">Demirtaş · 108 daire · 2024'te teslim</span></p>
+      <div class="cta"><a class="pill light" href="costana.html"><span data-l="ru">Подробнее</span><span data-l="tr">Keşfet</span></a><a class="pill dark" href="#cat"><span data-l="ru">Проекты в продаже</span><span data-l="tr">Satıştaki projeler</span></a></div>
+    </div>
+    <p class="cap"><span data-l="ru">Gardenia — гармония с природой, спокойная атмосфера и комфорт у моря.</span><span data-l="tr">Gardenia, doğayla uyumlu yapısı ve huzur veren atmosferiyle dengeli bir yaşam sunar.</span></p>
+  </div>
+  <div class="dots"><button type="button" aria-label="The Legend" class="on"></button><button type="button" aria-label="Excellence"></button><button type="button" aria-label="Aria"></button><button type="button" aria-label="Saga"></button><button type="button" aria-label="Cleopatra Glory"></button><button type="button" aria-label="Gardenia"></button></div>
+</section>
+
+<section class="exp"><div class="wrap">
+  <h2><span data-l="ru">21 год опыта</span><span data-l="tr">21 Yıllık Tecrübe</span></h2>
+  <p><span data-l="ru">BestHome более 21 года работает на рынке недвижимости Алании. В основе каждого проекта — инженерный подход, качество строительства и высокий инвестиционный потенциал.</span><span data-l="tr">BestHome, 21 yıllık deneyimiyle Alanya gayrimenkulünde güven sunar. Mühendislik ve yüksek yatırım potansiyeli önceliklidir.</span></p>
+  <div class="tiles">
+    <div><b>47+</b><span data-l="ru">проектов</span><span data-l="tr">proje</span></div>
+    <div><b>248 000</b><span data-l="ru">м² построено</span><span data-l="tr">m² proje alanı</span></div>
+    <div><b>56</b><span data-l="ru">стран покупателей</span><span data-l="tr">ülkeden finansal ortak</span></div>
+    <div><b>2157</b><span data-l="ru">выданных тапу</span><span data-l="tr">tapu</span></div>
+  </div>
+</div></section>
+
+<section class="cat" id="cat"><div class="wrap">
+  <h2><span data-l="ru">Исследуйте жилые пространства</span><span data-l="tr">Yaşam Alanlarını Keşfedin</span></h2>
+  <p class="sub"><span data-l="ru">Место, созданное для хорошего самочувствия.</span><span data-l="tr">İyi hissetmek için tasarlanmış bir yer.</span></p>
+  <div class="tabs"><span class="on"><span data-l="ru">Текущие проекты · 3</span><span data-l="tr">Devam eden · 3</span></span><span><span data-l="ru">Завершённые · 42</span><span data-l="tr">Tamamlanan · 42</span></span><span><span data-l="ru">Все</span><span data-l="tr">Tümü</span></span></div>
+  <div class="grid">
+    <article class="card">
+      <div class="ph"><img src="https://www.besthome.com.tr/media/ff3b2pvb/card-700x760.jpg?width=700&format=webp&quality=72" alt="Cleopatra Costana" loading="lazy"><span class="badge"><span data-l="ru">В процессе</span><span data-l="tr">Devam ediyor</span></span></div>
+      <h3>BestHome 52 Cleopatra Costana</h3>
+      <p class="d"><span data-l="ru">Спокойный проект у Клеопатры с потенциалом роста стоимости.</span><span data-l="tr">Her geçen gün değerlenen, huzur dolu bir yaşam.</span></p>
+      <div class="f"><span><span data-l="ru">50 м до моря · 56–135 м² · 2027</span><span data-l="tr">Denize 50 m · 56–135 m² · 2027</span></span><b><span data-l="ru">от € ···</span><span data-l="tr">€ ···'dan</span></b></div>
+      <div class="act"><a class="pill" href="costana.html#lead"><span data-l="ru">Контакты</span><span data-l="tr">İletişim</span></a><a class="more" href="costana.html"><span data-l="ru">Подробнее</span><span data-l="tr">Keşfet</span></a></div>
+    </article>
+    <article class="card">
+      <div class="ph"><img src="https://www.besthome.com.tr/media/firjc3hw/solo-card-mobile.jpg?width=700&format=webp&quality=72" alt="Cleopatra Solo" loading="lazy"><span class="badge"><span data-l="ru">В процессе</span><span data-l="tr">Devam ediyor</span></span></div>
+      <h3>BestHome 49 Cleopatra Solo</h3>
+      <p class="d"><span data-l="ru">Минималистичная архитектура и продуманные планировки в районе Клеопатра.</span><span data-l="tr">Minimal tasarım ve maksimum konforun dengelendiği seçkin bir proje.</span></p>
+      <div class="f"><span><span data-l="ru">175 м до моря · 63–174 м² · 2028</span><span data-l="tr">Denize 175 m · 63–174 m² · 2028</span></span><b><span data-l="ru">от € ···</span><span data-l="tr">€ ···'dan</span></b></div>
+      <div class="act"><a class="pill" href="costana.html#lead"><span data-l="ru">Контакты</span><span data-l="tr">İletişim</span></a><a class="more" href="costana.html"><span data-l="ru">Подробнее</span><span data-l="tr">Keşfet</span></a></div>
+    </article>
+    <article class="card">
+      <div class="ph"><img src="https://www.besthome.com.tr/media/lqvdluiw/glory-card-d.jpg?width=700&format=webp&quality=72" alt="Cleopatra Glory" loading="lazy"><span class="badge"><span data-l="ru">В процессе</span><span data-l="tr">Devam ediyor</span></span></div>
+      <h3>BestHome 48 Cleopatra Glory</h3>
+      <p class="d"><span data-l="ru">Выразительная архитектура и сильная локация у Клеопатры.</span><span data-l="tr">Seçkin mimarisi ve merkezi konumuyla değer kazanan bir yaşam.</span></p>
+      <div class="f"><span><span data-l="ru">580 м до моря · 55–135 м² · 2028</span><span data-l="tr">Denize 580 m · 55–135 m² · 2028</span></span><b><span data-l="ru">от € ···</span><span data-l="tr">€ ···'dan</span></b></div>
+      <div class="act"><a class="pill" href="costana.html#lead"><span data-l="ru">Контакты</span><span data-l="tr">İletişim</span></a><a class="more" href="costana.html"><span data-l="ru">Подробнее</span><span data-l="tr">Keşfet</span></a></div>
+    </article>
+    <article class="card">
+      <div class="ph"><img src="https://www.besthome.com.tr/media/yakn552s/36-37-legend-card.jpg?width=520&format=webp&quality=72" alt="The Legend" loading="lazy"><span class="badge"><span data-l="ru">Завершено</span><span data-l="tr">Tamamlandı</span></span></div>
+      <h3>BestHome 36–37 The Legend</h3>
+      <p class="d"><span data-l="ru">Сильная архитектура и характер в центре Алании.</span><span data-l="tr">Güçlü mimarisi ve karakterli duruşuyla fark yaratan bir yaşam.</span></p>
+      <div class="f"><span><span data-l="ru">Сдан · 4,9 в Google, 156 отзывов</span><span data-l="tr">Teslim edildi · Google'da 4,9, 156 yorum</span></span></div>
+      <div class="act"><a class="pill" href="costana.html#lead"><span data-l="ru">Контакты</span><span data-l="tr">İletişim</span></a><a class="more" href="costana.html"><span data-l="ru">Подробнее</span><span data-l="tr">Keşfet</span></a></div>
+    </article>
+  </div>
+</div></section>
+
+<footer class="ftr"><div class="wrap">
+  <div><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTI5IiBoZWlnaHQ9IjIxIiB2aWV3Qm94PSIwIDAgMTI5IDIxIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cGF0aCBkPSJNMTE4LjkzIDEyLjUyMDhWMTIuNzMzMUMxMTguOTMgMTMuNjcwMyAxMTguOTc0IDE0LjUzNjggMTE5LjA2MyAxNS4zMzI2QzExOS4xNTEgMTYuMTI4NCAxMTkuMzI4IDE2LjgyNjkgMTE5LjU5MyAxNy40MjgyQzExOS44NzYgMTguMDI5NSAxMjAuMjc0IDE4LjQ5ODEgMTIwLjc4NyAxOC44MzQxQzEyMS4zMTggMTkuMTcwMSAxMjIuMDA3IDE5LjMzODEgMTIyLjg1NiAxOS4zMzgxQzEyMy40NTcgMTkuMzM4MSAxMjMuOTg4IDE5LjI0OTcgMTI0LjQ0OCAxOS4wNzI4QzEyNC45MDggMTguODk2IDEyNS4zMDUgMTguNjU3MyAxMjUuNjQxIDE4LjM1NjZDMTI1Ljk5NSAxOC4wNTYgMTI2LjI5NiAxNy43MDIzIDEyNi41NDMgMTcuMjk1NkMxMjYuNzkxIDE2Ljg3MTIgMTI3LjAwMyAxNi40MjAyIDEyNy4xOCAxNS45NDI3TDEyNy43NjQgMTYuMTU0OUMxMjcuNDgxIDE2LjkzMzEgMTI3LjE1MyAxNy41Nzg1IDEyNi43ODIgMTguMDkxNEMxMjYuNDExIDE4LjYwNDIgMTI1Ljk4NiAxOS4wMTA5IDEyNS41MDkgMTkuMzExNkMxMjUuMDMxIDE5LjYxMjIgMTI0LjQ5MiAxOS44MjQ0IDEyMy44OTEgMTkuOTQ4MkMxMjMuMjg5IDIwLjA4OTcgMTIyLjYyNiAyMC4xNjA0IDEyMS45MDEgMjAuMTYwNEMxMjAuOTExIDIwLjE2MDQgMTIwLjAzNiAxOS45ODM2IDExOS4yNzUgMTkuNjI5OUMxMTguNTMyIDE5LjI1ODUgMTE3LjkwNSAxOC43NjM0IDExNy4zOTIgMTguMTQ0NEMxMTYuODk3IDE3LjUyNTUgMTE2LjUyNSAxNi44MDkzIDExNi4yNzggMTUuOTk1OEMxMTYuMDMgMTUuMTY0NiAxMTUuOTA2IDE0LjI4MDQgMTE1LjkwNiAxMy4zNDMyQzExNS45MDYgMTIuNDQxMyAxMTYuMDQ4IDExLjU4MzYgMTE2LjMzMSAxMC43NzAxQzExNi42MTQgOS45Mzg5NSAxMTcuMDIgOS4yMTM4OSAxMTcuNTUxIDguNTk0OTVDMTE4LjA4MSA3Ljk1ODMyIDExOC43MjcgNy40NTQzMiAxMTkuNDg3IDcuMDgyOTVDMTIwLjI0OCA2LjcxMTU4IDEyMS4xMTQgNi41MjU4OSAxMjIuMDg3IDYuNTI1ODlDMTIyLjkzNiA2LjUyNTg5IDEyMy43MDUgNi42NzYyMSAxMjQuMzk1IDYuOTc2ODRDMTI1LjEwMiA3LjI1OTc5IDEyNS43MDMgNy42NjY1MyAxMjYuMTk4IDguMTk3MDVDMTI2LjcxMSA4LjcyNzU4IDEyNy4xIDkuMzY0MjEgMTI3LjM2NiAxMC4xMDY5QzEyNy42NDkgMTAuODMyIDEyNy43OSAxMS42MzY2IDEyNy43OSAxMi41MjA4SDExOC45M1pNMTI0LjYwNyAxMS42OTg1QzEyNC42MDcgMTEuMjIxMSAxMjQuNTg5IDEwLjcxNzEgMTI0LjU1NCAxMC4xODY1QzEyNC41MTggOS42NTYgMTI0LjQwNCA5LjE2OTY4IDEyNC4yMDkgOC43Mjc1OEMxMjQuMDMyIDguMjg1NDcgMTIzLjc0OSA3LjkyMjk1IDEyMy4zNiA3LjY0QzEyMi45ODkgNy4zMzkzNyAxMjIuNDY3IDcuMTg5MDUgMTIxLjc5NSA3LjE4OTA1QzEyMS4yMjkgNy4xODkwNSAxMjAuNzYxIDcuMzQ4MjEgMTIwLjM4OSA3LjY2NjUzQzEyMC4wMTggNy45ODQ4NCAxMTkuNzI2IDguMzczODkgMTE5LjUxNCA4LjgzMzY4QzExOS4zMDIgOS4yOTM0NyAxMTkuMTUxIDkuNzg4NjMgMTE5LjA2MyAxMC4zMTkyQzExOC45NzQgMTAuODMyIDExOC45MyAxMS4yOTE4IDExOC45MyAxMS42OTg1SDEyNC42MDdaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNMTAwLjU5MiAxMC4zOTg3QzEwMC41OTIgMTAuMDI3NCAxMDAuNTY1IDkuNjczNjggMTAwLjUxMiA5LjMzNzY4QzEwMC40NzcgOC45ODQgMTAwLjM3OSA4LjY3NDUzIDEwMC4yMiA4LjQwOTI2QzEwMC4wNzkgOC4xMjYzMiA5OS44NjY2IDcuOTA1MjYgOTkuNTgzNiA3Ljc0NjExQzk5LjMwMDcgNy41NjkyNiA5OC45MjA1IDcuNDgwODQgOTguNDQzIDcuNDgwODRDOTcuODU5NCA3LjQ4MDg0IDk3LjM0NjYgNy42MTM0NyA5Ni45MDQ1IDcuODc4NzRDOTYuNDYyNCA4LjE0NCA5Ni4wODIyIDguNTA2NTMgOTUuNzYzOCA4Ljk2NjMyQzk1LjQ2MzIgOS40MDg0MiA5NS4yMzMzIDkuOTIxMjYgOTUuMDc0MiAxMC41MDQ4Qzk0LjkzMjcgMTEuMDcwNyA5NC44NjE5IDExLjY2MzIgOTQuODYxOSAxMi4yODIxVjE5LjE3ODlIOTYuOTU3NVYxOS44NDIxSDg5Ljg3NVYxOS4xNzg5SDkyLjE1NjNWNy41MDczN0g4OS44NzVWNi44NDQyMUg5NC44NjE5VjkuMzM3NjhIOTQuOTE1Qzk1LjMyMTcgOC40MzU3OSA5NS45MTQyIDcuNzQ2MSA5Ni42OTIzIDcuMjY4NjNDOTcuNDcwNCA2Ljc3MzQ3IDk4LjQwNzYgNi41MjU4OSA5OS41MDQxIDYuNTI1ODlDMTAwLjU4MyA2LjUyNTg5IDEwMS40NDkgNi43NzM0NyAxMDIuMTA0IDcuMjY4NjNDMTAyLjc1OCA3Ljc0NjEgMTAzLjEzOCA4LjQ4ODg0IDEwMy4yNDQgOS40OTY4NEgxMDMuMjk3QzEwMy42ODYgOC40ODg4NCAxMDQuMjk2IDcuNzQ2MSAxMDUuMTI4IDcuMjY4NjNDMTA1Ljk1OSA2Ljc3MzQ3IDEwNi44NjEgNi41MjU4OSAxMDcuODMzIDYuNTI1ODlDMTA5LjE0MiA2LjUyNTg5IDExMC4xMTUgNi44MTc2OCAxMTAuNzUxIDcuNDAxMjZDMTExLjQwNiA3Ljk4NDg0IDExMS43MzMgOC45Mzk3OSAxMTEuNzMzIDEwLjI2NjFWMTkuMTc4OUgxMTMuODI4VjE5Ljg0MjFIMTA2LjkzMVYxOS4xNzg5SDEwOS4wMjdWMTAuMzk4N0MxMDkuMDI3IDEwLjAyNzQgMTA5IDkuNjczNjggMTA4Ljk0NyA5LjMzNzY4QzEwOC45MTIgOC45ODQgMTA4LjgyNCA4LjY3NDUzIDEwOC42ODIgOC40MDkyNkMxMDguNTQxIDguMTI2MzIgMTA4LjMzNyA3LjkwNTI2IDEwOC4wNzIgNy43NDYxMUMxMDcuODA3IDcuNTY5MjYgMTA3LjQ2MiA3LjQ4MDg0IDEwNy4wMzggNy40ODA4NEMxMDYuNDE5IDcuNDgwODQgMTA1Ljg3IDcuNjIyMzIgMTA1LjM5MyA3LjkwNTI2QzEwNC45MzMgOC4xODgyMSAxMDQuNTQ0IDguNTY4NDIgMTA0LjIyNiA5LjA0NTlDMTAzLjkyNSA5LjUwNTY4IDEwMy42OTUgMTAuMDM2MiAxMDMuNTM2IDEwLjYzNzVDMTAzLjM3NyAxMS4yMjExIDEwMy4yOTcgMTEuODIyMyAxMDMuMjk3IDEyLjQ0MTNWMTkuMTc4OUgxMDUuMzkzVjE5Ljg0MjFIOTguNDk2MVYxOS4xNzg5SDEwMC41OTJWMTAuMzk4N1oiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik03NS42MjMgMTMuMzQzMkM3NS42MjMgMTIuNjcxMiA3NS43MjAzIDExLjkzNzMgNzUuOTE0OCAxMS4xNDE1Qzc2LjEyNyAxMC4zNDU3IDc2LjQ3MTkgOS42MTE3OSA3Ni45NDk0IDguOTM5NzlDNzcuNDI2OCA4LjI1MDExIDc4LjA1NDYgNy42NzUzNyA3OC44MzI3IDcuMjE1NThDNzkuNjI4NSA2Ljc1NTc5IDgwLjYxODggNi41MjU4OSA4MS44MDM3IDYuNTI1ODlDODIuOTg4NSA2LjUyNTg5IDgzLjk3IDYuNzU1NzkgODQuNzQ4MSA3LjIxNTU4Qzg1LjU0MzkgNy42NzUzNyA4Ni4xODA1IDguMjUwMTEgODYuNjU4IDguOTM5NzlDODcuMTM1NSA5LjYxMTc5IDg3LjQ3MTUgMTAuMzQ1NyA4Ny42NjYgMTEuMTQxNUM4Ny44NzgyIDExLjkzNzMgODcuOTg0MyAxMi42NzEyIDg3Ljk4NDMgMTMuMzQzMkM4Ny45ODQzIDE0LjAxNTIgODcuODc4MiAxNC43NDkxIDg3LjY2NiAxNS41NDQ4Qzg3LjQ3MTUgMTYuMzQwNiA4Ny4xMzU1IDE3LjA4MzQgODYuNjU4IDE3Ljc3MzFDODYuMTgwNSAxOC40NDUxIDg1LjU0MzkgMTkuMDEwOSA4NC43NDgxIDE5LjQ3MDdDODMuOTcgMTkuOTMwNSA4Mi45ODg1IDIwLjE2MDQgODEuODAzNyAyMC4xNjA0QzgwLjYxODggMjAuMTYwNCA3OS42Mjg1IDE5LjkzMDUgNzguODMyNyAxOS40NzA3Qzc4LjA1NDYgMTkuMDEwOSA3Ny40MjY4IDE4LjQ0NTEgNzYuOTQ5NCAxNy43NzMxQzc2LjQ3MTkgMTcuMDgzNCA3Ni4xMjcgMTYuMzQwNiA3NS45MTQ4IDE1LjU0NDhDNzUuNzIwMyAxNC43NDkxIDc1LjYyMyAxNC4wMTUyIDc1LjYyMyAxMy4zNDMyWk03OC42NDcgMTMuMzQzMkM3OC42NDcgMTQuMDMyOCA3OC42NjQ3IDE0Ljc0OTEgNzguNzAwMSAxNS40OTE4Qzc4LjczNTUgMTYuMjE2OCA3OC44NTA0IDE2Ljg4IDc5LjA0NDkgMTcuNDgxM0M3OS4yMzk1IDE4LjA2NDggNzkuNTQ4OSAxOC41NTEyIDc5Ljk3MzQgMTguOTQwMkM4MC40MTU1IDE5LjMxMTYgODEuMDI1NiAxOS40OTczIDgxLjgwMzcgMTkuNDk3M0M4Mi41ODE4IDE5LjQ5NzMgODMuMTgzMSAxOS4zMTE2IDgzLjYwNzUgMTguOTQwMkM4NC4wMzE5IDE4LjU1MTIgODQuMzQxNCAxOC4wNjQ4IDg0LjUzNTkgMTcuNDgxM0M4NC43NDgxIDE2Ljg4IDg0Ljg3MTkgMTYuMjE2OCA4NC45MDczIDE1LjQ5MThDODQuOTQyNiAxNC43NDkxIDg0Ljk2MDMgMTQuMDMyOCA4NC45NjAzIDEzLjM0MzJDODQuOTYwMyAxMi42NTM1IDg0Ljk0MjYgMTEuOTQ2MSA4NC45MDczIDExLjIyMTFDODQuODcxOSAxMC40NzgzIDg0Ljc0ODEgOS44MTUxNiA4NC41MzU5IDkuMjMxNThDODQuMzQxNCA4LjYzMDMyIDg0LjAzMTkgOC4xNDQgODMuNjA3NSA3Ljc3MjYzQzgzLjE4MzEgNy4zODM1OCA4Mi41ODE4IDcuMTg5MDUgODEuODAzNyA3LjE4OTA1QzgxLjAyNTYgNy4xODkwNSA4MC40MTU1IDcuMzgzNTggNzkuOTczNCA3Ljc3MjYzQzc5LjU0ODkgOC4xNDQgNzkuMjM5NSA4LjYzMDMyIDc5LjA0NDkgOS4yMzE1OEM3OC44NTA0IDkuODE1MTYgNzguNzM1NSAxMC40NzgzIDc4LjcwMDEgMTEuMjIxMUM3OC42NjQ3IDExLjk0NjEgNzguNjQ3IDEyLjY1MzUgNzguNjQ3IDEzLjM0MzJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNjcuOTc1IDEuNTM4OTVINjUuNTg3NlYwLjg3NTc5M0g3My40OTI1VjEuNTM4OTVINzAuOTk5VjE5LjE3OUg3My40OTI1VjE5Ljg0MjFINjUuNTg3NlYxOS4xNzlINjcuOTc1VjEwLjQyNTNINTkuNzUxOFYxOS4xNzlINjIuMTM5MlYxOS44NDIxSDU0LjIzNDRWMTkuMTc5SDU2LjcyNzhWMS41Mzg5NUg1NC4yMzQ0VjAuODc1NzkzSDYyLjEzOTJWMS41Mzg5NUg1OS43NTE4VjkuNzYyMTFINjcuOTc1VjEuNTM4OTVaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNDUuMjE2OCA2Ljg0NDIySDQ3LjA0NzFWMy4zMTYyMkg0OS43NTI4VjYuODQ0MjJINTIuNjk3MlY3LjUwNzM4SDQ5Ljc1MjhWMTYuODk3N0M0OS43NTI4IDE3LjY5MzUgNDkuODUwMSAxOC4yNzcxIDUwLjA0NDYgMTguNjQ4NEM1MC4yMzkxIDE5LjAxOTggNTAuNjEwNSAxOS4yMDU1IDUxLjE1ODcgMTkuMjA1NUM1MS42NzE1IDE5LjIwNTUgNTIuMDUxNyAxOS4wNDYzIDUyLjI5OTMgMTguNzI4QzUyLjU2NDYgMTguNDA5NyA1Mi44MDMzIDE4LjAzODMgNTMuMDE1NSAxNy42MTM5TDUzLjYyNTYgMTcuODc5Mkw1My4zODY5IDE4LjM1NjZDNTMuMTIxNiAxOC44MzQxIDUyLjczMjYgMTkuMjU4NSA1Mi4yMTk3IDE5LjYyOTlDNTEuNzI0NiAxOS45ODM2IDUwLjk5OTUgMjAuMTYwNCA1MC4wNDQ2IDIwLjE2MDRDNDkuMzU0OSAyMC4xNjA0IDQ4LjgwNjcgMjAuMDcyIDQ4LjQgMTkuODk1MkM0OC4wMTA5IDE5LjcxODMgNDcuNzEwMyAxOS40Nzk2IDQ3LjQ5ODEgMTkuMTc5QzQ3LjMwMzUgMTguODYwNiA0Ny4xNzk3IDE4LjUwNyA0Ny4xMjY3IDE4LjExNzlDNDcuMDczNiAxNy43Mjg5IDQ3LjA0NzEgMTcuMzIyMSA0Ny4wNDcxIDE2Ljg5NzdWNy41MDczOEg0NS4yMTY4VjYuODQ0MjJaIiBmaWxsPSJ3aGl0ZSIvPgo8cGF0aCBkPSJNNDIuNDU5OSAxMC43OTY2SDQxLjgyMzNDNDEuNzM0OSAxMC4zNTQ1IDQxLjYxOTkgOS45MzAxIDQxLjQ3ODUgOS41MjMzN0M0MS4zNTQ3IDkuMDk4OTUgNDEuMTYwMSA4LjcyNzU4IDQwLjg5NDkgOC40MDkyNkM0MC42NDczIDguMDkwOTUgNDAuMzI5IDcuODM0NTMgMzkuOTM5OSA3LjY0QzM5LjU1MDkgNy40NDU0NyAzOS4wNjQ2IDcuMzQ4MjEgMzguNDgxIDcuMzQ4MjFDMzcuODc5NyA3LjM0ODIxIDM3LjM1OCA3LjQ5ODUzIDM2LjkxNTkgNy43OTkxNkMzNi40OTE1IDguMDgyMSAzNi4yNzkzIDguNTQxODkgMzYuMjc5MyA5LjE3ODUzQzM2LjI3OTMgOS43MjY3NCAzNi40NTYyIDEwLjE1MTIgMzYuODA5OCAxMC40NTE4QzM3LjE4MTIgMTAuNzUyNCAzNy42MzIyIDExLjAxNzcgMzguMTYyNyAxMS4yNDc2QzM4LjY5MzIgMTEuNDU5OCAzOS4yNzY4IDExLjY2MzIgMzkuOTEzNCAxMS44NTc3QzQwLjU1IDEyLjA1MjIgNDEuMTMzNiAxMi4zMTc1IDQxLjY2NDIgMTIuNjUzNUM0Mi4xOTQ3IDEyLjk3MTggNDIuNjM2OCAxMy40MDUxIDQyLjk5MDUgMTMuOTUzM0M0My4zNjE4IDE0LjUwMTUgNDMuNTQ3NSAxNS4yMjY1IDQzLjU0NzUgMTYuMTI4NEM0My41NDc1IDE2LjgwMDQgNDMuMzk3MiAxNy4zOTI4IDQzLjA5NjYgMTcuOTA1N0M0Mi43OTU5IDE4LjQwMDggNDIuNDA2OSAxOC44MTY0IDQxLjkyOTQgMTkuMTUyNEM0MS40NTE5IDE5LjQ4ODQgNDAuOTEyNiAxOS43MzYgNDAuMzExMyAxOS44OTUyQzM5LjcxIDIwLjA3MiAzOS4xMTc2IDIwLjE2MDQgMzguNTM0IDIwLjE2MDRDMzcuNzM4MyAyMC4xNjA0IDM2Ljk2OSAyMC4wODk3IDM2LjIyNjMgMTkuOTQ4MkMzNS40ODM1IDE5LjgwNjcgMzQuNzQwOCAxOS42MDM0IDMzLjk5OCAxOS4zMzgxVjE1LjAxNDNIMzQuNzkzOEMzNC43OTM4IDE1LjYzMzMgMzQuODczNCAxNi4yMTY4IDM1LjAzMjYgMTYuNzY1MUMzNS4xOTE3IDE3LjI5NTYgMzUuNDIxNiAxNy43NjQyIDM1LjcyMjMgMTguMTcwOUMzNi4wNDA2IDE4LjU3NzcgMzYuNDI5NiAxOC45MDQ4IDM2Ljg4OTQgMTkuMTUyNEMzNy4zNjY5IDE5LjM4MjMgMzcuOTMyOCAxOS40OTczIDM4LjU4NzEgMTkuNDk3M0MzOC45MjMxIDE5LjQ5NzMgMzkuMjU5MSAxOS40NTMxIDM5LjU5NTEgMTkuMzY0NkMzOS45NDg4IDE5LjI1ODUgNDAuMjU4MyAxOS4xMDgyIDQwLjUyMzUgMTguOTEzN0M0MC44MDY1IDE4LjcxOTIgNDEuMDM2NCAxOC40ODA0IDQxLjIxMzIgMTguMTk3NUM0MS4zOSAxNy44OTY4IDQxLjQ3ODUgMTcuNTUyIDQxLjQ3ODUgMTcuMTYyOUM0MS40Nzg1IDE2LjU3OTQgNDEuMzAxNiAxNi4xMTk2IDQwLjk0NzkgMTUuNzgzNkM0MC41OTQzIDE1LjQ0NzYgNDAuMTUyMiAxNS4xNTU4IDM5LjYyMTYgMTQuOTA4MkMzOS4xMDg4IDE0LjY2MDYgMzguNTQyOSAxNC40Mzk2IDM3LjkyMzkgMTQuMjQ1MUMzNy4zMDUgMTQuMDMyOCAzNi43MzAzIDEzLjc3NjQgMzYuMTk5NyAxMy40NzU4QzM1LjY4NjkgMTMuMTc1MiAzNS4yNTM2IDEyLjc5NDkgMzQuODk5OSAxMi4zMzUyQzM0LjU0NjMgMTEuODU3NyAzNC4zNjk0IDExLjIzODcgMzQuMzY5NCAxMC40NzgzQzM0LjM2OTQgOS44NDE2OCAzNC40ODQ0IDkuMjc1NzkgMzQuNzE0MyA4Ljc4MDYzQzM0Ljk0NDIgOC4yODU0NyAzNS4yNTM2IDcuODY5ODkgMzUuNjQyNyA3LjUzMzg5QzM2LjAzMTcgNy4xOTc4OSAzNi40ODI3IDYuOTUwMzIgMzYuOTk1NSA2Ljc5MTE2QzM3LjUwODQgNi42MTQzMiAzOC4wNDc3IDYuNTI1ODkgMzguNjEzNiA2LjUyNTg5QzM5LjMyMSA2LjUyNTg5IDM5Ljk4NDIgNi42MTQzMiA0MC42MDMxIDYuNzkxMTZDNDEuMjIyIDYuOTY4IDQxLjg0MSA3LjE1MzY4IDQyLjQ1OTkgNy4zNDgyMVYxMC43OTY2WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTIyLjE0OSAxMi41MjA4VjEyLjczMzFDMjIuMTQ5IDEzLjY3MDMgMjIuMTkzMiAxNC41MzY4IDIyLjI4MTYgMTUuMzMyNkMyMi4zNzAxIDE2LjEyODQgMjIuNTQ2OSAxNi44MjY5IDIyLjgxMjIgMTcuNDI4MkMyMy4wOTUxIDE4LjAyOTUgMjMuNDkzIDE4LjQ5ODEgMjQuMDA1OCAxOC44MzQxQzI0LjUzNjQgMTkuMTcwMSAyNS4yMjYxIDE5LjMzODEgMjYuMDc0OSAxOS4zMzgxQzI2LjY3NjIgMTkuMzM4MSAyNy4yMDY3IDE5LjI0OTcgMjcuNjY2NSAxOS4wNzI4QzI4LjEyNjMgMTguODk2IDI4LjUyNDIgMTguNjU3MyAyOC44NjAyIDE4LjM1NjZDMjkuMjEzOCAxOC4wNTYgMjkuNTE0NSAxNy43MDIzIDI5Ljc2MjEgMTcuMjk1NkMzMC4wMDk2IDE2Ljg3MTIgMzAuMjIxOCAxNi40MjAyIDMwLjM5ODcgMTUuOTQyN0wzMC45ODIzIDE2LjE1NDlDMzAuNjk5MyAxNi45MzMxIDMwLjM3MjIgMTcuNTc4NSAzMC4wMDA4IDE4LjA5MTRDMjkuNjI5NCAxOC42MDQyIDI5LjIwNSAxOS4wMTA5IDI4LjcyNzUgMTkuMzExNkMyOC4yNTAxIDE5LjYxMjIgMjcuNzEwNyAxOS44MjQ0IDI3LjEwOTQgMTkuOTQ4MkMyNi41MDgyIDIwLjA4OTcgMjUuODQ1IDIwLjE2MDQgMjUuMTE5OSAyMC4xNjA0QzI0LjEyOTYgMjAuMTYwNCAyMy4yNTQzIDE5Ljk4MzYgMjIuNDkzOCAxOS42Mjk5QzIxLjc1MTEgMTkuMjU4NSAyMS4xMjMzIDE4Ljc2MzQgMjAuNjEwNSAxOC4xNDQ0QzIwLjExNTMgMTcuNTI1NSAxOS43NDM5IDE2LjgwOTMgMTkuNDk2NCAxNS45OTU4QzE5LjI0ODggMTUuMTY0NiAxOS4xMjUgMTQuMjgwNCAxOS4xMjUgMTMuMzQzMkMxOS4xMjUgMTIuNDQxMyAxOS4yNjY1IDExLjU4MzYgMTkuNTQ5NCAxMC43NzAxQzE5LjgzMjQgOS45Mzg5NSAyMC4yMzkxIDkuMjEzODkgMjAuNzY5NiA4LjU5NDk1QzIxLjMwMDIgNy45NTgzMiAyMS45NDU2IDcuNDU0MzIgMjIuNzA2MSA3LjA4Mjk1QzIzLjQ2NjUgNi43MTE1OCAyNC4zMzMgNi41MjU4OSAyNS4zMDU2IDYuNTI1ODlDMjYuMTU0NSA2LjUyNTg5IDI2LjkyMzcgNi42NzYyMSAyNy42MTM0IDYuOTc2ODRDMjguMzIwOCA3LjI1OTc5IDI4LjkyMjEgNy42NjY1MyAyOS40MTcyIDguMTk3MDVDMjkuOTMwMSA4LjcyNzU4IDMwLjMxOTEgOS4zNjQyMSAzMC41ODQ0IDEwLjEwNjlDMzAuODY3MyAxMC44MzIgMzEuMDA4OCAxMS42MzY2IDMxLjAwODggMTIuNTIwOEgyMi4xNDlaTTI3LjgyNTYgMTEuNjk4NUMyNy44MjU2IDExLjIyMTEgMjcuODA3OSAxMC43MTcxIDI3Ljc3MjYgMTAuMTg2NUMyNy43MzcyIDkuNjU2IDI3LjYyMjMgOS4xNjk2OCAyNy40Mjc3IDguNzI3NThDMjcuMjUwOSA4LjI4NTQ3IDI2Ljk2NzkgNy45MjI5NSAyNi41Nzg5IDcuNjRDMjYuMjA3NSA3LjMzOTM3IDI1LjY4NTggNy4xODkwNSAyNS4wMTM4IDcuMTg5MDVDMjQuNDQ3OSA3LjE4OTA1IDIzLjk3OTMgNy4zNDgyMSAyMy42MDc5IDcuNjY2NTNDMjMuMjM2NiA3Ljk4NDg0IDIyLjk0NDggOC4zNzM4OSAyMi43MzI2IDguODMzNjhDMjIuNTIwNCA5LjI5MzQ3IDIyLjM3MDEgOS43ODg2MyAyMi4yODE2IDEwLjMxOTJDMjIuMTkzMiAxMC44MzIgMjIuMTQ5IDExLjI5MTggMjIuMTQ5IDExLjY5ODVIMjcuODI1NloiIGZpbGw9IndoaXRlIi8+CjxwYXRoIGQ9Ik0zLjM5NTgyIDEuNTM4OTVIMC45MDIzNDRWMC44NzU3OTNIOS45NzQzNEMxMC45NjQ3IDAuODc1NzkzIDExLjc3ODEgMC45OTA3NDEgMTIuNDE0OCAxLjIyMDY0QzEzLjA1MTQgMS40NTA1MyAxMy41NDY2IDEuNzY4ODUgMTMuOTAwMiAyLjE3NTU4QzE0LjI3MTYgMi41NjQ2NCAxNC41MTkyIDMuMDI0NDIgMTQuNjQzIDMuNTU0OTVDMTQuNzg0NCA0LjA2Nzc5IDE0Ljg1NTIgNC42MTYgMTQuODU1MiA1LjE5OTU4QzE0Ljg1NTIgNS44NTM5IDE0Ljc0OTEgNi40MTk3OSAxNC41MzY5IDYuODk3MjdDMTQuMzI0NyA3LjM3NDc0IDE0LjAzMjkgNy43OTAzMiAxMy42NjE1IDguMTQ0QzEzLjMwNzggOC40OCAxMi44ODM0IDguNzU0MTEgMTIuMzg4MiA4Ljk2NjMyQzExLjg5MzEgOS4xNzg1MyAxMS4zNTM3IDkuMzQ2NTMgMTAuNzcwMSA5LjQ3MDMyVjkuNTIzMzdDMTEuNTgzNiA5LjYyOTQ4IDEyLjMyNjMgOS43ODg2NCAxMi45OTgzIDEwLjAwMDhDMTMuNjg4IDEwLjIxMzEgMTQuMjcxNiAxMC41MjI1IDE0Ljc0OTEgMTAuOTI5M0MxNS4yNDQyIDExLjMxODMgMTUuNjI0NCAxMS44MjIzIDE1Ljg4OTcgMTIuNDQxM0MxNi4xNTUgMTMuMDYwMiAxNi4yODc2IDEzLjgyOTUgMTYuMjg3NiAxNC43NDkxQzE2LjI4NzYgMTUuNzU3MSAxNi4xMzczIDE2LjU5NzEgMTUuODM2NyAxNy4yNjkxQzE1LjUzNiAxNy45MjM0IDE1LjExMTYgMTguNDQ1MSAxNC41NjM0IDE4LjgzNDFDMTQuMDMyOSAxOS4yMDU1IDEzLjM4NzQgMTkuNDcwNyAxMi42MjcgMTkuNjI5OUMxMS44ODQyIDE5Ljc3MTQgMTEuMDcwOCAxOS44NDIxIDEwLjE4NjYgMTkuODQyMUgwLjkwMjM0NFYxOS4xNzlIMy4zOTU4MlYxLjUzODk1Wk02LjQxOTgyIDE5LjE3OUg4Ljk2NjM0QzkuNzk3NSAxOS4xNzkgMTAuNDc4MyAxOS4wNjQgMTEuMDA4OSAxOC44MzQxQzExLjU1NzEgMTguNjA0MiAxMS45ODE1IDE4LjI4NTkgMTIuMjgyMSAxNy44NzkyQzEyLjYwMDQgMTcuNDcyNCAxMi44MTI3IDE2Ljk4NjEgMTIuOTE4OCAxNi40MjAyQzEzLjA0MjYgMTUuODM2NiAxMy4xMDQ0IDE1LjIwODggMTMuMTA0NCAxNC41MzY4QzEzLjEwNDQgMTMuMDUxNCAxMi44MTI3IDExLjkxMDcgMTIuMjI5MSAxMS4xMTVDMTEuNjYzMiAxMC4zMDE1IDEwLjcxNzEgOS44OTQ3NCA5LjM5MDc3IDkuODk0NzRINi40MTk4MlYxOS4xNzlaTTYuNDE5ODIgOS4wNzI0Mkg4LjY0ODAzQzkuMTc4NTUgOS4wNzI0MiA5LjYyOTUgOS4wMTkzNyAxMC4wMDA5IDguOTEzMjdDMTAuMzg5OSA4Ljc4OTQ4IDEwLjcwODIgOC41OTQ5NSAxMC45NTU4IDguMzI5NjlDMTEuMjAzNCA4LjA0Njc0IDExLjM4MDIgNy42NzUzNyAxMS40ODYzIDcuMjE1NThDMTEuNjEwMSA2Ljc1NTc5IDExLjY3MiA2LjE4OTkgMTEuNjcyIDUuNTE3OUMxMS42NzIgNC45ODczNyAxMS42MzY3IDQuNDgzMzcgMTEuNTY1OSA0LjAwNTlDMTEuNDk1MiAzLjUxMDc0IDExLjM1MzcgMy4wODYzMiAxMS4xNDE1IDIuNzMyNjRDMTAuOTQ3IDIuMzYxMjcgMTAuNjY0IDIuMDY5NDggMTAuMjkyNyAxLjg1NzI3QzkuOTM4OTggMS42NDUwNiA5LjQ3MDM0IDEuNTM4OTUgOC44ODY3NiAxLjUzODk1SDYuNDE5ODJWOS4wNzI0MloiIGZpbGw9IndoaXRlIi8+Cjwvc3ZnPgo=" alt="BestHome" width="129" height="21"><p>Cikcilli Mah., Tugayoğlu Cad., Tugayoğlu Sok. No: 18/1, Alanya, Antalya</p><a href="tel:+902425112208">+90 242 511 22 08</a></div>
+  <div><b><span data-l="ru">Проекты</span><span data-l="tr">Projeler</span></b><a href="#cat">BestHome Living</a><a href="#cat">BestHome Plus</a></div>
+  <div><b><span data-l="ru">О компании</span><span data-l="tr">Kurumsal</span></b><a href="#cat"><span data-l="ru">О нас</span><span data-l="tr">Hakkımızda</span></a><a href="#cat"><span data-l="ru">Наша команда</span><span data-l="tr">Ekibimiz</span></a><a href="#cat"><span data-l="ru">Блог</span><span data-l="tr">Blog</span></a></div>
+  <div class="legal">©2026 BestHome. <span data-l="ru">Все права защищены.</span><span data-l="tr">Tüm hakları saklıdır.</span></div>
+</div></footer>
+
+<a class="callback" href="costana.html#lead"><span data-l="ru">Мы вам перезвоним</span><span data-l="tr">Sizi arayalım</span></a>
+<a class="chatbtn" href="#cat"><i><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#fff" d="M12 15a3 3 0 0 0 3-3V6a3 3 0 1 0-6 0v6a3 3 0 0 0 3 3Zm5-3a5 5 0 0 1-10 0H5a7 7 0 0 0 6 6.9V22h2v-3.1A7 7 0 0 0 19 12h-2Z"/></svg></i><span><span data-l="ru">Консультант</span><span data-l="tr">Danışman</span></span></a>
+<script>
+(function(){
+  var h=document.documentElement,b=document.querySelectorAll('.lang button'),k='bh-demo-lang';
+  function s(l){h.setAttribute('data-lang',l);h.lang=l;b.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.set===l))});try{localStorage.setItem(k,l)}catch(e){}}
+  b.forEach(function(x){x.addEventListener('click',function(){s(x.dataset.set)})});
+  var q=(location.hash||'').replace('#',''),saved=null;try{saved=localStorage.getItem(k)}catch(e){}
+  s(q==='tr'||q==='ru'?q:(saved||(/^tr/i.test(navigator.language)?'tr':'ru')));
+  var sl=[].slice.call(document.querySelectorAll('.slide')),db=[].slice.call(document.querySelectorAll('.slider .dots button')),cur=0,timer=null;
+  function go(i){if(!sl.length)return;cur=(i+sl.length)%sl.length;sl.forEach(function(s,j){s.classList.toggle('on',j===cur)});db.forEach(function(d,j){d.classList.toggle('on',j===cur)})}
+  db.forEach(function(d,j){d.addEventListener('click',function(){go(j);if(timer){clearInterval(timer);timer=null}})});
+  var want=(location.search.match(/slide=([a-z]+)/)||[])[1];
+  if(want){sl.forEach(function(s,j){if(s.dataset.k===want)go(j)})}
+  else if(sl.length&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches)){timer=setInterval(function(){go(cur+1)},5000)}
+  var f=document.querySelector('form[data-demo]');
+  if(f)f.addEventListener('submit',function(e){e.preventDefault();var o=f.querySelector('.ok');if(o)o.hidden=false});
+})();
+
+</script>
+</body>
+</html>
