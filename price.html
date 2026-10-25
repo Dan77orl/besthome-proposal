@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ru" data-lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>BestHome × UWIN-MEDIA — €10 000</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* Одна страница о цене в стиле предложения UWIN-MEDIA: белый фон, графит, морской синий */
+:root{--paper:#f5f7f9;--white:#fff;--ink:#17202b;--ink-2:#4a5561;--line:#d8dee5;--sea:#0e5a8a;--foam:#e3eef6;--ok:#1f7a45;color-scheme:light}
+*{box-sizing:border-box}
+html{background:var(--white)}
+body{margin:0;background:var(--white);color:var(--ink);font:400 16.5px/1.55 "Schibsted Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--sea)}
+h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-.01em;text-wrap:balance}
+p{margin:0}
+.wrap{max-width:980px;margin:0 auto;padding:0 28px}
+[data-l]{display:none}
+html[data-lang="ru"] [data-l="ru"],html[data-lang="tr"] [data-l="tr"]{display:revert}
+.top{border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.brand{font-weight:700}.brand span{color:var(--ink-2);font-weight:500}
+.lang{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.lang button{border:0;background:transparent;padding:6px 14px;font:600 14px "Schibsted Grotesk",sans-serif;color:var(--ink-2);cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.lang button:focus-visible{outline:2px solid var(--sea);outline-offset:-2px}
+
+.hero{padding:44px 0 30px}
+.kicker{color:var(--ink-2);font-weight:500;margin-bottom:14px}
+.price{display:flex;align-items:baseline;gap:18px;flex-wrap:wrap}
+.price b{font-size:clamp(54px,9vw,92px);font-weight:800;letter-spacing:-.035em;line-height:1}
+.price s{font-size:24px;color:var(--ink-2)}
+.hero h1{font-size:clamp(22px,3vw,30px);font-weight:700;margin-top:12px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chips span{background:var(--foam);color:var(--sea);font-weight:600;font-size:14.5px;padding:7px 13px;border-radius:999px}
+
+section{padding:26px 0;border-top:1px solid var(--line)}
+section h2{font-size:20px;margin-bottom:14px}
+.stages{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.stage{border:1px solid var(--line);border-radius:12px;padding:14px 15px;display:flex;flex-direction:column;gap:6px}
+.stage .n{font-size:12.5px;font-weight:700;color:var(--sea);letter-spacing:.06em;text-transform:uppercase}
+.stage h3{font-size:16px}
+.stage p{font-size:13.5px;color:var(--ink-2)}
+.stage .sum{margin-top:auto;padding-top:8px;border-top:1px solid var(--line);font-weight:800;font-size:20px}
+.stage .sum small{display:block;font-size:12px;font-weight:500;color:var(--ink-2)}
+
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.num{background:var(--paper);border-radius:12px;padding:13px 14px}
+.num b{display:block;font-size:26px;font-weight:800;letter-spacing:-.02em}
+.num span{font-size:13.5px;color:var(--ink-2)}
+
+.cmp{display:flex;flex-direction:column;gap:12px}
+.bar{display:grid;grid-template-columns:200px 1fr;gap:14px;align-items:center}
+.bar .lbl{font-size:14.5px;color:var(--ink-2)}
+.bar .lbl b{display:block;color:var(--ink);font-size:15.5px}
+.track{position:relative;height:38px;background:var(--paper);border-radius:8px}
+.fill{position:absolute;inset:0 auto 0 0;border-radius:8px;display:flex;align-items:center;padding:0 12px;font-weight:700;font-size:15px;white-space:nowrap}
+.fill.mkt{background:#c9d6e3;color:var(--ink)}
+.fill.mkt i{position:absolute;top:0;bottom:0;right:0;width:33%;background:repeating-linear-gradient(45deg,#c9d6e3,#c9d6e3 6px,#dbe5ee 6px,#dbe5ee 12px);border-radius:0 8px 8px 0}
+.fill.mkt em{position:relative;font-style:normal}
+.fill.our{background:var(--sea);color:#fff}
+.note{font-size:13.5px;color:var(--ink-2);margin-top:6px;max-width:80ch}
+
+.safe{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 26px;list-style:none;padding:0;margin:0}
+.safe li{padding-left:26px;position:relative;font-size:15.5px}
+.safe li:before{content:"✓";position:absolute;left:0;top:0;color:var(--ok);font-weight:800}
+
+.foot{background:var(--ink);color:#c9d1d9;padding:22px 0;font-size:14.5px;margin-top:8px}
+.foot .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center}
+.foot b{color:#fff}
+.foot a{color:#fff;font-weight:600}
+.links{display:flex;gap:16px;flex-wrap:wrap}
+
+@media (max-width:860px){.stages,.nums{grid-template-columns:1fr 1fr}.bar{grid-template-columns:1fr}.safe{grid-template-columns:1fr}}
+@page{size:A4;margin:10mm 0}@media print{.lang{display:none}section,.stage,.num{break-inside:avoid}body{font-size:13px}.wrap{padding:0 14mm}.top .wrap{height:44px}.hero{padding:16px 0 14px}.price b{font-size:64px}section{padding:12px 0}section h2{font-size:17px;margin-bottom:10px}.stages,.nums{grid-template-columns:repeat(4,1fr)}.stage{padding:11px 12px}.stage p{font-size:12px}.num{padding:10px 12px}.num b{font-size:22px}.num span{font-size:12px}.bar{grid-template-columns:170px 1fr}.track{height:32px}.safe{grid-template-columns:1fr 1fr}.safe li{font-size:13.5px}.foot{margin-top:0;padding:14px 0}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <div class="brand">UWIN-MEDIA <span>× BestHome</span></div>
+  <div class="lang" role="group" aria-label="Language"><button type="button" data-set="ru" aria-pressed="true">RU</button><button type="button" data-set="tr" aria-pressed="false">TR</button></div>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker"><span data-l="ru">Окончательная цена · 26 октября 2026</span><span data-l="tr">Son fiyat · 26 Ekim 2026</span></div>
+  <div class="price"><b>€10 000</b><s>€12 000</s></div>
+  <h1><span data-l="ru">Новый сайт, админка, ИИ, CRM и SEO/GEO на 10 языках — за 11 недель</span><span data-l="tr">Yeni site, yönetim paneli, yapay zekâ, CRM ve 10 dilde SEO/GEO — 11 haftada</span></h1>
+  <div class="chips"><span data-l="ru">Без аванса</span><span data-l="tr">Avans yok</span><span data-l="ru">Оплата только после показа</span><span data-l="tr">Ödeme yalnızca gösterimden sonra</span><span data-l="ru">Цена фиксированная</span><span data-l="tr">Sabit fiyat</span></div>
+</div></header>
+
+<section><div class="wrap">
+  <h2><span data-l="ru">Четыре этапа по €2 500</span><span data-l="tr">Dört aşama, her biri 2.500 €</span></h2>
+  <div class="stages">
+    <div class="stage"><div class="n"><span data-l="ru">Этап 1 · недели 1–4</span><span data-l="tr">1. aşama · 1–4. hafta</span></div><h3><span data-l="ru">Новый сайт и админка</span><span data-l="tr">Yeni site ve yönetim paneli</span></h3><p><span data-l="ru">Перенос и шлифовка, каталог с ценами и планировками, формы в CRM. Показываем на тестовом адресе.</span><span data-l="tr">Taşıma ve cila, fiyat ve kat planlı katalog, formlar CRM’e. Test adresinde gösteriyoruz.</span></p><div class="sum">€2 500<small><span data-l="ru">делаем до оплаты</span><span data-l="tr">ödemeden önce yapıyoruz</span></small></div></div>
+    <div class="stage"><div class="n"><span data-l="ru">Этап 2 · недели 5–6</span><span data-l="tr">2. aşama · 5–6. hafta</span></div><h3><span data-l="ru">Домен и ИИ</span><span data-l="tr">Alan adı ve yapay zekâ</span></h3><p><span data-l="ru">Переключение без потерь, SEO-основа, база знаний, консультант, презентер, управляющий.</span><span data-l="tr">Kayıpsız geçiş, SEO altyapısı, bilgi tabanı, danışman, sunucu, yönetici.</span></p><div class="sum">€2 500<small><span data-l="ru">после приёмки</span><span data-l="tr">kabulden sonra</span></small></div></div>
+    <div class="stage"><div class="n"><span data-l="ru">Этап 3 · недели 6–8</span><span data-l="tr">3. aşama · 6–8. hafta</span></div><h3><span data-l="ru">CRM и интеграции</span><span data-l="tr">CRM ve entegrasyonlar</span></h3><p><span data-l="ru">Google Business, Analytics, Search Console, Яндекс, Bing, ваша CRM, отчёты в Telegram.</span><span data-l="tr">Google İşletme, Analytics, Search Console, Yandex, Bing, CRM’iniz, Telegram raporları.</span></p><div class="sum">€2 500<small><span data-l="ru">после приёмки</span><span data-l="tr">kabulden sonra</span></small></div></div>
+    <div class="stage"><div class="n"><span data-l="ru">Этап 4 · недели 8–11</span><span data-l="tr">4. aşama · 8–11. hafta</span></div><h3><span data-l="ru">10 языков, SEO/GEO, журнал</span><span data-l="tr">10 dil, SEO/GEO, dergi</span></h3><p><span data-l="ru">Семь новых языков, посадочные под запросы по странам, первый номер журнала.</span><span data-l="tr">Yedi yeni dil, ülkelere göre açılış sayfaları, derginin ilk sayısı.</span></p><div class="sum">€2 500<small><span data-l="ru">после приёмки</span><span data-l="tr">kabulden sonra</span></small></div></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2><span data-l="ru">Что стоит за этой суммой</span><span data-l="tr">Bu tutarın arkasında ne var</span></h2>
+  <div class="nums">
+    <div class="num"><b>~290</b><span><span data-l="ru">страниц переносим и шлифуем</span><span data-l="tr">sayfa taşınır ve cilalanır</span></span></div>
+    <div class="num"><b>46 × 10</b><span><span data-l="ru">проектов на десяти языках</span><span data-l="tr">proje, on dilde</span></span></div>
+    <div class="num"><b>93</b><span><span data-l="ru">статьи блога</span><span data-l="tr">blog makalesi</span></span></div>
+    <div class="num"><b>+7</b><span><span data-l="ru">новых языков</span><span data-l="tr">yeni dil</span></span></div>
+    <div class="num"><b>7</b><span><span data-l="ru">посадочных под запросы покупателей</span><span data-l="tr">alıcı aramalarına göre açılış sayfası</span></span></div>
+    <div class="num"><b>10</b><span><span data-l="ru">модулей админки</span><span data-l="tr">yönetim paneli modülü</span></span></div>
+    <div class="num"><b>6</b><span><span data-l="ru">интеграций: Google, Яндекс, Bing, CRM</span><span data-l="tr">entegrasyon: Google, Yandex, Bing, CRM</span></span></div>
+    <div class="num"><b>3 → 1</b><span><span data-l="ru">копии сайта сводим в одну</span><span data-l="tr">site kopyası tek siteye</span></span></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2><span data-l="ru">Если бы это делали с нуля</span><span data-l="tr">Bu iş sıfırdan yapılsaydı</span></h2>
+  <div class="cmp">
+    <div class="bar"><div class="lbl"><b><span data-l="ru">418–624 часа работы</span><span data-l="tr">418–624 saat iş</span></b><span data-l="ru">по рыночной ставке €35/ч</span><span data-l="tr">35 €/saat piyasa ücretiyle</span></div><div class="track"><div class="fill mkt" style="width:100%"><i></i><em>€14 630 – €21 840</em></div></div></div>
+    <div class="bar"><div class="lbl"><b><span data-l="ru">Наша цена</span><span data-l="tr">Bizim fiyatımız</span></b><span data-l="ru">за 11 недель, без аванса</span><span data-l="tr">11 haftada, avanssız</span></div><div class="track"><div class="fill our" style="width:45.8%">€10 000</div></div></div>
+  </div>
+  <p class="note"><span data-l="ru">Админка, CRM, ИИ-модули, журнал и переводы на 21 язык у нас уже работают. Мы не пишем всё с нуля, а настраиваем готовую платформу под BestHome. Поэтому быстрее и дешевле рынка.</span><span data-l="tr">Yönetim paneli, CRM, yapay zekâ modülleri, dergi ve 21 dile çeviri altyapısı bizde zaten çalışıyor. Sıfırdan yazmıyoruz, hazır platformu BestHome’a uyarlıyoruz. Bu yüzden piyasadan daha hızlı ve daha uygun.</span></p>
+</div></section>
+
+<section><div class="wrap">
+  <h2><span data-l="ru">Почему вы ничем не рискуете</span><span data-l="tr">Neden hiçbir risk almıyorsunuz</span></h2>
+  <ul class="safe">
+    <li><span data-l="ru">Первый этап делаем и показываем до любого платежа.</span><span data-l="tr">İlk aşamayı herhangi bir ödemeden önce yapıp gösteriyoruz.</span></li>
+    <li><span data-l="ru">Платите за этап только после того, как приняли его.</span><span data-l="tr">Her aşamayı yalnızca kabul ettikten sonra ödersiniz.</span></li>
+    <li><span data-l="ru">Ваш текущий сайт работает до самого переключения, адреса страниц сохраняются.</span><span data-l="tr">Mevcut siteniz geçişe kadar çalışır, sayfa adresleri korunur.</span></li>
+    <li><span data-l="ru">Сайт, дизайн, тексты, данные и домен — ваши.</span><span data-l="tr">Site, tasarım, metinler, veriler ve alan adı sizindir.</span></li>
+  </ul>
+  <p class="note"><span data-l="ru">После запуска — сопровождение от €750 в месяц, первый месяц бесплатно.</span><span data-l="tr">Yayından sonra bakım aylık 750 €’dan, ilk ay ücretsiz.</span></p>
+</div></section>
+
+<div class="foot"><div class="wrap">
+  <div><b>Dmitriy Orlyansky</b> · UWIN-MEDIA · +7 701 756 27 00</div>
+  <div class="links"><a href="index.html"><span data-l="ru">Предложение</span><span data-l="tr">Teklif</span></a><a href="audit.html"><span data-l="ru">Аудит</span><span data-l="tr">Denetim</span></a><a href="https://wa.me/77017562700">WhatsApp</a></div>
+</div></div>
+
+<script>
+(function(){var h=document.documentElement,b=document.querySelectorAll('.lang button');function s(l){h.setAttribute('data-lang',l);h.lang=l;b.forEach(function(x){x.setAttribute('aria-pressed',String(x.dataset.set===l))})}b.forEach(function(x){x.addEventListener('click',function(){s(x.dataset.set)})});var q=(location.hash||'').slice(1);s(q==='tr'||q==='ru'?q:(/^tr/i.test(navigator.language)?'tr':'ru'))})();
+</script>
+</body>
+</html>
